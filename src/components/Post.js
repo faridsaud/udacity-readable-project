@@ -16,7 +16,7 @@ class Post extends Component {
                 <div className="card-body">
                     <h5 className="card-title">Post 1 title</h5>
                     <p className="card-text">{displayText}..</p>
-                    <button type="button" className="btn btn-primary btn-sm"><i className="material-icons">thumb_up</i></button>
+                    <button type="button" className="btn btn-light btn-sm"><i className="material-icons">thumb_up</i></button>
                 </div>
                 <div className="card-footer text-muted">
                     <p>By Farid Saud - 2 days ago</p>
