@@ -5,6 +5,7 @@ import {Route} from 'react-router-dom';
 import HomePage from "./components/HomePage";
 import Menu from "./components/Menu";
 import CategoryHomePage from "./components/CategoryHomePage";
+import CreatePost from "./components/CreatePost";
 
 class App extends Component {
   render() {
@@ -17,6 +18,9 @@ class App extends Component {
             )}/>
             <Route exact path='/category/:id' render={(props) => (
                 <CategoryHomePage />
+            )}/>
+            <Route exact path='/post/(create|update/:id)' render={(props) => (
+                <CreatePost />
             )}/>
         </div>
 

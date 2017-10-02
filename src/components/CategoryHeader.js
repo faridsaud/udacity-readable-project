@@ -23,8 +23,8 @@ class CategoryHeader extends Component {
         }))
     };
 
-    changeOrderStatus=()=>{
-        this.setState(prevState=>({
+    changeOrderStatus = () => {
+        this.setState(prevState => ({
             isOrderByOpen: !prevState.isOrderByOpen,
             isFilterByOpen: false
         }))
@@ -35,7 +35,7 @@ class CategoryHeader extends Component {
             <div className="card-header">
                 <div className="row">
                     <div className="col-md-8">
-                        <Link to={"/category/"+this.props.name}>
+                        <Link to={"/category/" + this.props.name}>
                             <h4>{this.props.name}</h4>
                         </Link>
                     </div>
@@ -49,8 +49,10 @@ class CategoryHeader extends Component {
                             <button type="button" className="btn btn-primary btn-sm" title="Filter by"
                                     onClick={this.changeFilterStatus}><i className="material-icons"><i
                                 className="material-icons">filter_list</i></i></button>
-                            <button type="button" className="btn btn-primary btn-sm" title="New post"><i
-                                className="material-icons">add</i></button>
+                            <Link to="/post/create" className="btn btn-primary btn-sm">
+                                <i className="material-icons">add</i>
+                            </Link>
+
                         </div>
                     </div>
 
