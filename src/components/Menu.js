@@ -4,14 +4,17 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 
 class Menu extends Component {
-    render (){
+    render() {
         return (
             <div>
                 <nav className="navbar navbar-light bg-light justify-content-center">
-                    <a className="navbar-brand text-center" href="#">Readable Project</a>
+                    <Link to="/" className="navbar-brand text-center">
+                        Readable Project
+                    </Link>
                 </nav>
             </div>
         )

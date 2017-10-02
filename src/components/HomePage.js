@@ -11,14 +11,15 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div>
-                <Menu/>
-                <br/>
-                <div className="container">
-                    <Category/>
-                </div>
-            </div>
 
+            <div className="container">
+                <Category/>
+                <br/>
+                <Category/>
+                <br/>
+                <Category/>
+
+            </div>
 
         )
     }

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Post from "./Post";
 import FilterForm from "./FilterForm";
 import OrderForm from "./OrderForm";
+import {Link} from 'react-router-dom';
 
 
 class CategoryHeader extends Component {
@@ -34,7 +35,9 @@ class CategoryHeader extends Component {
             <div className="card-header">
                 <div className="row">
                     <div className="col-md-8">
-                        <h4>{this.props.name}</h4>
+                        <Link to={"/category/"+this.props.name}>
+                            <h4>{this.props.name}</h4>
+                        </Link>
                     </div>
                     <div className="col-md-2">
                         <OrderForm/>
