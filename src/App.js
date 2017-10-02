@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage";
 import Menu from "./components/Menu";
 import CategoryHomePage from "./components/CategoryHomePage";
 import CreatePost from "./components/CreatePost";
+import PostDetail from "./components/PostDetail";
 
 class App extends Component {
   render() {
@@ -21,6 +22,9 @@ class App extends Component {
             )}/>
             <Route exact path='/post/(create|update/:id)' render={(props) => (
                 <CreatePost />
+            )}/>
+            <Route exact path='/post/:id' render={(props) => (
+                <PostDetail />
             )}/>
         </div>
 
