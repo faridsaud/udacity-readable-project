@@ -14,17 +14,12 @@ class Post extends Component {
             <div className="card">
 
                 <div className="card-body">
-                    <h4 className="card-title">Post 1 title</h4>
+                    <h5 className="card-title">Post 1 title</h5>
                     <p className="card-text">{displayText}..</p>
-
-
-                    <button type="button" class="btn btn-primary btn-sm"><i class="material-icons">thumb_up</i></button>
-                    <button type="button" class="btn btn-primary btn-sm"><i class="material-icons">thumb_down</i></button>
-
+                    <button type="button" className="btn btn-primary btn-sm"><i className="material-icons">thumb_up</i></button>
                 </div>
-                <div class="card-footer text-muted">
+                <div className="card-footer text-muted">
                     <p>By Farid Saud - 2 days ago</p>
-                    <p></p>
                 </div>
             </div>
 

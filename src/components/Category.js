@@ -4,29 +4,23 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Post from "./Post";
+import CategoryHeader from "./CategoryHeader";
+import CategoryBody from "./CategoryBody";
 
 
 class Category extends Component {
 
+
     render() {
         return (
             <div className="row">
-                <div className="col-sm-12">
-                    <div class="card">
-                        <h4 class="card-header">Category 1</h4>
-                        <div class="card-body">
-                            <div className="row">
-                                <div className="col-sm-3">
-                                    <Post/>
-                                </div>
-                            </div>
-                        </div>
+                <div className="col-md-12">
+                    <div className="card">
+                        <CategoryHeader name="Category name"/>
+                        <CategoryBody/>
                     </div>
                 </div>
-
             </div>
-
-
         )
     }
 }
