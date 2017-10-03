@@ -5,8 +5,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter} from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
-import reducer from 'reducers'
+import reducer from './reducers'
 import thunk from 'redux-thunk';
+import { Provider } from 'react-redux'
 
 
 const logger = store => next => action => {

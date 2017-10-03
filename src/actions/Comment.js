@@ -16,9 +16,9 @@ export function removeComment ({id, parentId}) {
 }
 
 
-export function addComment (comment) {
+export function createComment (comment) {
     return {
-        type: ADD_COMMENT,
+        type: CREATE_COMMENT,
         comment
     }
 }

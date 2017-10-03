@@ -1,4 +1,4 @@
-import {ADD_COMMENT, ADD_VOTE, REMOVE_COMMENT, REMOVE_VOTE, UPDATE_COMMENT} from "../actions/Comment";
+import {ADD_VOTE, CREATE_COMMENT, REMOVE_COMMENT, REMOVE_VOTE, SET_COMMENTS, UPDATE_COMMENT} from "../actions/Comment";
 
 const initialStateComments = {
     comments: []
