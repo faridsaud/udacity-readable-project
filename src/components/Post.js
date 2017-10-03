@@ -16,7 +16,7 @@ class Post extends Component {
             <div className="card">
 
                 <div className="card-body">
-                    <Link to="/post/123" className="card-title">
+                    <Link to="/post/detail/123" className="card-title">
                         <h5>Post 1 title</h5>
                     </Link>
                     <p className="card-text">{displayText}..</p>

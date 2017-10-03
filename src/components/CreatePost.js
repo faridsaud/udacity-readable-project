@@ -41,6 +41,7 @@ class CreatePost extends Component {
                         </div>
                     </div>
                 </form>
+
             </div>
 
         )

@@ -47,9 +47,8 @@ class CategoryHeader extends Component {
                             <button type="button" className="btn btn-primary btn-sm" title="Order by"><i
                                 className="material-icons" onClick={this.changeOrderStatus}>reorder</i></button>
                             <button type="button" className="btn btn-primary btn-sm" title="Filter by"
-                                    onClick={this.changeFilterStatus}><i className="material-icons"><i
-                                className="material-icons">filter_list</i></i></button>
-                            <Link to="/post/create" className="btn btn-primary btn-sm">
+                                    onClick={this.changeFilterStatus}><i className="material-icons">filter_list</i></button>
+                            <Link to="/post/create" className="btn btn-primary btn-sm" title="Add new post">
                                 <i className="material-icons">add</i>
                             </Link>
 

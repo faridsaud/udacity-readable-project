@@ -11,9 +11,9 @@ class CategoryHomePage extends Component {
 
     render() {
         return (
-                <div className="container">
-                    <Category/>
-                </div>
+            <div className="container">
+                <Category/>
+            </div>
         )
     }
 }

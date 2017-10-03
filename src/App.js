@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path='/post/(create|update/:id)' render={(props) => (
                 <CreatePost />
             )}/>
-            <Route exact path='/post/:id' render={(props) => (
+            <Route exact path='/post/detail/:id' render={(props) => (
                 <PostDetail />
             )}/>
         </div>
