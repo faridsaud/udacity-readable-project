@@ -7,8 +7,10 @@ import PropTypes from 'prop-types';
 
 class CreatePost extends Component {
 
-    render() {
 
+
+
+    render() {
         return (
             <div className="container">
                 <form>
@@ -37,7 +39,11 @@ class CreatePost extends Component {
                     </div>
                     <div className="form-group row float-right">
                         <div className="col-sm-10 ">
-                            <button type="submit" className="btn btn-primary">Create</button>
+                            {this.props.isUpdate ? (
+                                <button type="submit" className="btn btn-primary">Update</button>
+                            ) : (
+                                <button type="submit" className="btn btn-primary">Create</button>
+                            )}
                         </div>
                     </div>
                 </form>

@@ -9,6 +9,8 @@ import CategoryBody from "./CategoryBody";
 
 class CreateComment extends Component {
 
+
+
     render() {
         return (
             <div className="card">

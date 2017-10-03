@@ -20,8 +20,11 @@ class App extends Component {
             <Route exact path='/category/:id' render={(props) => (
                 <CategoryHomePage />
             )}/>
-            <Route exact path='/post/(create|update/:id)' render={(props) => (
+            <Route exact path='/post/create' render={(props) => (
                 <CreatePost />
+            )}/>
+            <Route exact path='/post/update/:id' render={(props) => (
+                <CreatePost isUpdate={true}/>
             )}/>
             <Route exact path='/post/detail/:id' render={(props) => (
                 <PostDetail />

@@ -20,7 +20,7 @@ class Post extends Component {
                         <h5>Post 1 title</h5>
                     </Link>
                     <p className="card-text">{displayText}..</p>
-                    <button type="button" className="btn btn-light btn-sm float-right"><i className="material-icons">thumb_up</i>
+                    <button type="button" className="btn btn-light btn-sm float-left"><i className="material-icons">thumb_up</i>
                     </button>
                 </div>
                 <div className="card-footer text-muted">
