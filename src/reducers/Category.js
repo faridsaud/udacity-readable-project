@@ -5,7 +5,7 @@ const initialStateCategories = {
 };
 
 
-export default function category(state = initialStateCategories, action) {
+export default function categories(state = initialStateCategories, action) {
 
     switch (action.type) {
         case SET_CATEGORIES :
