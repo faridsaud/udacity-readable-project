@@ -1,9 +1,7 @@
 /**
  * Created by farid on 8/16/2017.
  */
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Post from "./Post";
+import React, {Component} from "react";
 import CategoryHeader from "./CategoryHeader";
 import CategoryBody from "./CategoryBody";
 

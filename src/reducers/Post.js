@@ -1,4 +1,4 @@
-import {CREATE_POST, REMOVE_POST, SET_POSTS, UPDATE_POST, REMOVE_VOTE_POST, ADD_VOTE_POST} from "../actions/Post";
+import {ADD_VOTE_POST, CREATE_POST, REMOVE_POST, REMOVE_VOTE_POST, SET_POSTS, UPDATE_POST} from "../actions/Post";
 
 const initialStatePosts = [];
 

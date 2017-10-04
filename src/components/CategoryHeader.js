@@ -1,12 +1,11 @@
 /**
  * Created by farid on 8/16/2017.
  */
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Post from "./Post";
+import React, {Component} from "react";
+import PropTypes from "prop-types";
 import FilterForm from "./FilterForm";
 import OrderForm from "./OrderForm";
-import {Link} from 'react-router-dom';
+import {Link} from "react-router-dom";
 
 
 class CategoryHeader extends Component {
@@ -47,7 +46,8 @@ class CategoryHeader extends Component {
                             <button type="button" className="btn btn-primary btn-sm" title="Order by"><i
                                 className="material-icons" onClick={this.changeOrderStatus}>reorder</i></button>
                             <button type="button" className="btn btn-primary btn-sm" title="Filter by"
-                                    onClick={this.changeFilterStatus}><i className="material-icons">filter_list</i></button>
+                                    onClick={this.changeFilterStatus}><i className="material-icons">filter_list</i>
+                            </button>
                             <Link to="/post/create" className="btn btn-primary btn-sm" title="Add new post">
                                 <i className="material-icons">add</i>
                             </Link>

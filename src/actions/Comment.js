@@ -6,8 +6,7 @@ export const UPDATE_COMMENT = "UPDATE_COMMENT"
 export const SET_COMMENTS = "SET_COMMENTS"
 
 
-
-export function removeComment ({id, parentId}) {
+export function removeComment({id, parentId}) {
     return {
         type: REMOVE_COMMENT,
         id,
@@ -16,7 +15,7 @@ export function removeComment ({id, parentId}) {
 }
 
 
-export function createComment (comment) {
+export function createComment(comment) {
     return {
         type: CREATE_COMMENT,
         comment
@@ -24,7 +23,7 @@ export function createComment (comment) {
 }
 
 
-export function addVote ({id}) {
+export function addVote({id}) {
     return {
         type: ADD_VOTE_COMMENT,
         id
@@ -32,7 +31,7 @@ export function addVote ({id}) {
 }
 
 
-export function removeVote ({id}) {
+export function removeVote({id}) {
     return {
         type: REMOVE_VOTE_COMMENT,
         id
@@ -40,7 +39,7 @@ export function removeVote ({id}) {
 }
 
 
-export function updateComment (comment) {
+export function updateComment(comment) {
     return {
         type: UPDATE_COMMENT,
         comment
@@ -48,7 +47,7 @@ export function updateComment (comment) {
 }
 
 
-export function setComments (comments) {
+export function setComments(comments) {
     return {
         type: SET_COMMENTS,
         comments

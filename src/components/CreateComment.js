@@ -1,14 +1,10 @@
 /**
  * Created by farid on 8/16/2017.
  */
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import CategoryHeader from "./CategoryHeader";
-import CategoryBody from "./CategoryBody";
+import React, {Component} from "react";
 
 
 class CreateComment extends Component {
-
 
 
     render() {
@@ -17,7 +13,8 @@ class CreateComment extends Component {
                 <div className="card-body">
                     <div className="form-group row">
                         <div className="col-sm-10">
-                            <textarea type="text" className="form-control" id="body" placeholder="Enter your comment text here"/>
+                            <textarea type="text" className="form-control" id="body"
+                                      placeholder="Enter your comment text here"/>
                         </div>
                     </div>
                     <div className="form-group row float-right">

@@ -1,9 +1,8 @@
 /**
  * Created by farid on 8/16/2017.
  */
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
 
 export class Comment extends Component {
@@ -12,9 +11,9 @@ export class Comment extends Component {
         isEditable: false
     };
 
-    editOnClickHandler =()=>{
-        this.setState((prevState)=>({
-            isEditable:!prevState.isEditable
+    editOnClickHandler = () => {
+        this.setState((prevState) => ({
+            isEditable: !prevState.isEditable
         }))
     };
 
@@ -31,7 +30,8 @@ export class Comment extends Component {
                         <div>
                             <div className="form-group row">
                                 <div className="col-sm-12">
-                                    <textarea type="text" className="form-control" id="body" placeholder="Enter your comment text here" value={text}/>
+                                    <textarea type="text" className="form-control" id="body"
+                                              placeholder="Enter your comment text here" value={text}/>
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-primary">Update</button>
@@ -47,7 +47,8 @@ export class Comment extends Component {
                     </button>
                     <button type="button" className="btn btn-danger btn-sm float-right"><i className="material-icons">delete</i>
                     </button>
-                    <button type="button" className="btn btn-primary btn-sm float-right" onClick={this.editOnClickHandler}><i className="material-icons">mode_edit</i>
+                    <button type="button" className="btn btn-primary btn-sm float-right"
+                            onClick={this.editOnClickHandler}><i className="material-icons">mode_edit</i>
                     </button>
                 </div>
                 <div className="card-footer text-muted">
@@ -62,9 +63,9 @@ export class Comment extends Component {
 
 Comment.propTypes = {};
 
-const mapStateToProps = (state, props)=>({
+const mapStateToProps = (state, props) => ({
     comments: state.comments,
-    posts:state.posts
+    posts: state.posts
 
 });
 

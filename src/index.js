@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import {BrowserRouter} from 'react-router-dom';
-import { createStore, applyMiddleware, compose } from 'redux'
-import reducer from './reducers'
-import thunk from 'redux-thunk';
-import { Provider } from 'react-redux'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
+import {BrowserRouter} from "react-router-dom";
+import {applyMiddleware, compose, createStore} from "redux";
+import reducer from "./reducers";
+import thunk from "redux-thunk";
+import {Provider} from "react-redux";
 
 
 const logger = store => next => action => {
@@ -31,7 +31,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-    <BrowserRouter><App/></BrowserRouter>
+        <BrowserRouter><App/></BrowserRouter>
     </Provider>, document.getElementById('root'));
 
 registerServiceWorker();

@@ -1,15 +1,13 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Route} from 'react-router-dom';
+import React, {Component} from "react";
+import "./App.css";
+import {Route} from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Menu from "./components/Menu";
 import CategoryHomePage from "./components/CategoryHomePage";
 import CreatePost from "./components/CreatePost";
 import PostDetail from "./components/PostDetail";
-import {connect} from 'react-redux'
 
-export default class App extends Component {
+class App extends Component {
 
     componentDidMount() {
         console.log("Props APP:", this.props);
@@ -41,17 +39,5 @@ export default class App extends Component {
         );
     }
 }
-/*
- const mapStateToProps = (state, props)=>({
- categories: state.categories,
- comments: state.comments,
- posts:state.posts
 
- });
- */
-
-const mapStateToProps = (state, props) => ({
-    categories: state.categories
-
-});
-
+export default App;

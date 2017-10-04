@@ -35,7 +35,7 @@ export function removePost({id}) {
 }
 
 
-export function addVote ({id}) {
+export function addVote({id}) {
     return {
         type: ADD_VOTE_POST,
         id
@@ -43,7 +43,7 @@ export function addVote ({id}) {
 }
 
 
-export function removeVote ({id}) {
+export function removeVote({id}) {
     return {
         type: REMOVE_VOTE_POST,
         id
