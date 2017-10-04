@@ -3,9 +3,20 @@
  */
 import React, {Component} from "react";
 import Category from "./Category";
+import * as API from '../utils/Api'
 
 
 class HomePage extends Component {
+
+    componentDidMount() {
+        console.log("API", API);
+        API.getPostsByCategory("react").then(data=>{
+            console.log("Data retrieved", data);
+        })
+        API.getPosts().then(data=>{
+            console.log("Data retrieved", data);
+        })
+    }
 
     render() {
         return (
