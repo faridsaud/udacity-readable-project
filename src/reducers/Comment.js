@@ -8,10 +8,10 @@ import {
 } from "../actions/Comment";
 import {REMOVE_POST} from "../actions/Post";
 
-const initialStateComments = [];
+const initialStateComments = {};
 
 
-export default function comments(state = initialStateComments, action) {
+export default function comment(state = initialStateComments, action) {
 
     switch (action.type) {
         case REMOVE_COMMENT :

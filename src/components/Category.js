@@ -14,7 +14,7 @@ class Category extends Component {
             <div className="row">
                 <div className="col-md-12">
                     <div className="card">
-                        <CategoryHeader name="Category name"/>
+                        <CategoryHeader name={this.props.name}/>
                         <CategoryBody/>
                     </div>
                 </div>
