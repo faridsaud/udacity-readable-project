@@ -17,9 +17,9 @@ export class HomePage extends Component {
         let categories = this.props.categories;
         return (
             <div className="container">
-                {categories && categories.map((category) => {
+                {categories && categories.map((category, index) => {
                     return (
-                        <div>
+                        <div key={index}>
                             <Category name={category.name}/>
                             <br/>
                         </div>
