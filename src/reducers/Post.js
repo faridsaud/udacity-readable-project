@@ -1,29 +1,24 @@
-import {CREATE_POST, REMOVE_POST, SET_POSTS, UPDATE_POST, REMOVE_VOTE, ADD_VOTE} from "../actions/Post";
+import {CREATE_POST, REMOVE_POST, SET_POSTS, UPDATE_POST, REMOVE_VOTE_POST, ADD_VOTE_POST} from "../actions/Post";
 
-const initialStateComments = {
-    posts: []
-};
+const initialStatePosts = [];
 
 
-export default function posts(state = initialStateComments, action) {
+export default function posts(state = initialStatePosts, action) {
 
     switch (action.type) {
         case REMOVE_POST :
             state.posts.find(post => post.id === action.id).deleted = true;
-            state.comments.filter(comment => comment.parentId === action.id).map(comment => {
-                comment.parentDeleted = true;
-            });
             return state;
 
         case CREATE_POST:
             state.posts.push(action.post);
             return state;
 
-        case ADD_VOTE:
+        case ADD_VOTE_POST:
             state.posts.find(post => post.id === action.id).voteScore += 1;
             return state;
 
-        case REMOVE_VOTE:
+        case REMOVE_VOTE_POST:
             state.posts.find(post => post.id === action.id).voteScore -= 1;
             return state;
 

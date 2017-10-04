@@ -1,8 +1,6 @@
 import {SET_CATEGORIES} from "../actions/Category";
 
-const initialStateCategories = {
-    categories: []
-};
+const initialStateCategories = [];
 
 
 export default function categories(state = initialStateCategories, action) {

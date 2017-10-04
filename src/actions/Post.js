@@ -2,8 +2,8 @@ export const SET_POSTS = "SET_POSTS"
 export const UPDATE_POST = "UPDATE_POST"
 export const CREATE_POST = "CREATE_POST"
 export const REMOVE_POST = "REMOVE_POST"
-export const ADD_VOTE = "ADD_VOTE"
-export const REMOVE_VOTE = "REMOVE_VOTE"
+export const ADD_VOTE_POST = "ADD_VOTE_POST"
+export const REMOVE_VOTE_POST = "REMOVE_VOTE_POST"
 
 
 export function setPosts({posts}) {
@@ -37,7 +37,7 @@ export function removePost({id}) {
 
 export function addVote ({id}) {
     return {
-        type: ADD_VOTE,
+        type: ADD_VOTE_POST,
         id
     }
 }
@@ -45,7 +45,7 @@ export function addVote ({id}) {
 
 export function removeVote ({id}) {
     return {
-        type: REMOVE_VOTE,
+        type: REMOVE_VOTE_POST,
         id
     }
 }

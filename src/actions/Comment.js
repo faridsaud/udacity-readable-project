@@ -1,7 +1,7 @@
 export const REMOVE_COMMENT = "REMOVE_COMMENT"
 export const CREATE_COMMENT = "CREATE_COMMENT"
-export const ADD_VOTE = "ADD_VOTE"
-export const REMOVE_VOTE = "REMOVE_VOTE"
+export const ADD_VOTE_COMMENT = "ADD_VOTE_COMMENT"
+export const REMOVE_VOTE_COMMENT = "REMOVE_VOTE_COMMENT"
 export const UPDATE_COMMENT = "UPDATE_COMMENT"
 export const SET_COMMENTS = "SET_COMMENTS"
 
@@ -26,7 +26,7 @@ export function createComment (comment) {
 
 export function addVote ({id}) {
     return {
-        type: ADD_VOTE,
+        type: ADD_VOTE_COMMENT,
         id
     }
 }
@@ -34,7 +34,7 @@ export function addVote ({id}) {
 
 export function removeVote ({id}) {
     return {
-        type: REMOVE_VOTE,
+        type: REMOVE_VOTE_COMMENT,
         id
     }
 }
