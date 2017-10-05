@@ -9,7 +9,10 @@ import {connect} from "react-redux";
 export class HomePage extends Component {
 
     componentDidMount() {
-        this.props.getCategories();
+        if(this.props.fetchCategories){
+            console.log("Fetching categories in homePage");
+            this.props.getCategories();
+        }
     }
 
 
@@ -33,7 +36,8 @@ export class HomePage extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    categories: state.category.categories
+    categories: state.category.categories,
+    fetchCategories: !state.category.isFetch
 });
 
 const mapDispatchToProps = dispatch => ({

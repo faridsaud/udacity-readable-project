@@ -4,6 +4,7 @@
 import React, {Component} from "react";
 import {fetchCreatePost} from "../actions/Post";
 import {connect} from "react-redux";
+import {fetchGetCategories} from "../actions/Category";
 
 
 export class CreatePost extends Component {
@@ -14,6 +15,14 @@ export class CreatePost extends Component {
         author:'',
         category:''
     };
+
+
+    componentDidMount() {
+        if(this.props.fetchCategories){
+            console.log("Fetching categories in createPost");
+            this.props.getCategories();
+        }
+    }
 
     titleOnChangeHandler = (event) =>{
         this.setState({
@@ -72,9 +81,14 @@ export class CreatePost extends Component {
                         <label className="col-sm-2 col-form-label">Category</label>
                         <div className="col-sm-4">
                             <select className="form-control" id="sel1" onChange={this.categoryOnChangeHandler} value={this.state.category}>
-                                <option value="react">react</option>
-                                <option value="redux">redux</option>
-                                <option value="udacity">udacity</option>
+                                {
+                                    this.props.categories.map((category, index)=>{
+                                        return(
+                                            <option key={index} value={category.name}>{category.name}</option>
+
+                                        )
+                                    })
+                                }
                             </select>
                         </div>
                     </div>
@@ -101,13 +115,20 @@ export class CreatePost extends Component {
     }
 }
 
+
+const mapStateToProps = (state, props) => ({
+    categories: state.category.categories,
+    fetchCategories: !state.category.isFetch
+});
+
 const mapDispatchToProps = dispatch => ({
-    createPost: (post) => dispatch(fetchCreatePost(post))
+    createPost: (post) => dispatch(fetchCreatePost(post)),
+    getCategories: () => dispatch(fetchGetCategories())
 });
 
 CreatePost.propTypes = {};
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(CreatePost)
