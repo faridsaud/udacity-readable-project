@@ -17,30 +17,36 @@ export default function comment(state = initialStateComments, action) {
 
     switch (action.type) {
         case REMOVE_COMMENT :
-            state.comments.find(comment => comment.id === action.id).deleted = true;
-            return state;
+            let newState = {...state};
+            newState.comments.find(comment => comment.id === action.id).deleted = true;
+            return newState;
 
         case REMOVE_POST :
-            state.comments.filter(comment => comment.parentId === action.id).map(comment => {
+            let newState = {...state};
+            newState.comments.filter(comment => comment.parentId === action.id).map(comment => {
                 comment.parentDeleted = true;
             });
-            return state;
+            return newState;
 
         case CREATE_COMMENT:
-            state.comments.push(action.comment);
-            return state;
+            let newState = {...state};
+            newState.comments.push(action.comment);
+            return newState;
 
         case ADD_VOTE_COMMENT:
-            state.comments.find(comment => comment.id === action.id).voteScore += 1;
-            return state;
+            let newState = {...state};
+            newState.comments.find(comment => comment.id === action.id).voteScore += 1;
+            return newState;
 
         case REMOVE_VOTE_COMMENT:
-            state.comments.find(comment => comment.id === action.id).voteScore -= 1;
-            return state;
+            let newState = {...state};
+            newState.comments.find(comment => comment.id === action.id).voteScore -= 1;
+            return newState;
 
         case UPDATE_COMMENT:
-            state.comments.find(comment => comment.id === action.comment.id).body = action.comment.body;
-            return state;
+            let newState = {...state};
+            newState.comments.find(comment => comment.id === action.comment.id).body = action.comment.body;
+            return newState;
 
         case SET_COMMENTS:
             return {
