@@ -14,37 +14,31 @@ const initialStateComments = {
 
 
 export default function comment(state = initialStateComments, action) {
-
+    let newState = {...state};
     switch (action.type) {
         case REMOVE_COMMENT :
-            let newState = {...state};
             newState.comments.find(comment => comment.id === action.id).deleted = true;
             return newState;
 
         case REMOVE_POST :
-            let newState = {...state};
             newState.comments.filter(comment => comment.parentId === action.id).map(comment => {
                 comment.parentDeleted = true;
             });
             return newState;
 
         case CREATE_COMMENT:
-            let newState = {...state};
             newState.comments.push(action.comment);
             return newState;
 
         case ADD_VOTE_COMMENT:
-            let newState = {...state};
             newState.comments.find(comment => comment.id === action.id).voteScore += 1;
             return newState;
 
         case REMOVE_VOTE_COMMENT:
-            let newState = {...state};
             newState.comments.find(comment => comment.id === action.id).voteScore -= 1;
             return newState;
 
         case UPDATE_COMMENT:
-            let newState = {...state};
             newState.comments.find(comment => comment.id === action.comment.id).body = action.comment.body;
             return newState;
 

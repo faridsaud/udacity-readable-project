@@ -7,10 +7,15 @@ import Category from "./Category";
 
 class CategoryHomePage extends Component {
 
+
     render() {
         return (
             <div className="container">
-                <Category/>
+                {
+                    this.props.match.params.categoryName && (
+                        <Category name={this.props.match.params.categoryName}/>
+                    )
+                }
             </div>
         )
     }

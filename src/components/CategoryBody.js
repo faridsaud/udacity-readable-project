@@ -14,7 +14,7 @@ class CategoryBody extends Component {
                 <div className="row">
                         {
                             this.props.posts.map((post,index)=>(
-                                <div  className="col-md-3" key={index}>
+                                <div  className="col-md-4" key={index}>
                                     <Post post={post}/>
                                     <br/>
                                 </div>
