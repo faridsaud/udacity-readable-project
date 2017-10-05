@@ -3,6 +3,7 @@
  */
 import React, {Component} from "react";
 import Post from "./Post";
+import PropTypes from 'prop-types';
 
 
 class CategoryBody extends Component {
@@ -11,15 +12,21 @@ class CategoryBody extends Component {
         return (
             <div className="card-body">
                 <div className="row">
-                    <div className="col-md-3">
-                        <Post/>
-                        <br/>
-                    </div>
+                        {
+                            this.props.posts.map((post,index)=>(
+                                <div  className="col-md-3" key={index}>
+                                    <Post post={post}/>
+                                    <br/>
+                                </div>
+                            ))
+                        }
                 </div>
             </div>
         )
     }
 }
 
-CategoryBody.propTypes = {};
+CategoryBody.propTypes = {
+    posts:PropTypes.array.isRequired
+};
 export default CategoryBody;

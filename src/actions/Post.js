@@ -2,6 +2,7 @@ import * as API from "../utils/Api";
 import * as uuid from "uuid";
 
 export const SET_POSTS = "SET_POSTS"
+export const ADD_CATEGORY_POSTS = "ADD_CATEGORY_POSTS"
 export const UPDATE_POST = "UPDATE_POST"
 export const CREATE_POST = "CREATE_POST"
 export const REMOVE_POST = "REMOVE_POST"
@@ -13,6 +14,15 @@ export function setPosts(posts) {
     return {
         type: SET_POSTS,
         posts
+    }
+}
+
+
+export function addCategoryPosts({posts, categoryName}) {
+    return {
+        type: ADD_CATEGORY_POSTS,
+        posts,
+        categoryName
     }
 }
 
@@ -59,6 +69,12 @@ export const fetchCreatePost = ({title, body, author, category}) => dispatch => 
     let timestamp = Date.now();
     return API.addPost({id, timestamp, title, body, author, category}).then((response) =>
         dispatch(createPost({id, timestamp, title, body, author, category}))
+    )
+};
+
+export const fetchGetPostByCategory = (categoryName) => dispatch => {
+    return API.getPostsByCategory(categoryName).then((posts) =>
+        dispatch(addCategoryPosts({posts, categoryName}))
     )
 };
 

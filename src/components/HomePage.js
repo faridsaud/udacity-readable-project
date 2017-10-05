@@ -10,7 +10,6 @@ export class HomePage extends Component {
 
     componentDidMount() {
         if(this.props.fetchCategories){
-            console.log("Fetching categories in homePage");
             this.props.getCategories();
         }
     }
