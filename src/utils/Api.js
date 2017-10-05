@@ -1,3 +1,4 @@
+
 const api = "http://127.0.0.1:3001/"
 
 let token = localStorage.token
@@ -5,8 +6,9 @@ if (!token)
     token = localStorage.token = Math.random().toString(36).substr(-8)
 
 const headers = {
-    'Accept': 'application/json',
-    'Authorization': token
+    'Authorization': token,
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
 }
 
 
@@ -29,8 +31,8 @@ export const getPosts = () => {
 
 export const addPost = ({id, timestamp, title, body, author, category}) => {
     const url = api + "posts";
-    const post = {id, timestamp, title, body, author, category};
-    return fetch(url, {method: "POST", headers, body:post}).then(res => res.json())
+    let post = {id, timestamp, title, body, author, category};
+    return fetch(url, {method: "POST", headers, body:JSON.stringify(post)}).then(res => res.json())
 }
 
 

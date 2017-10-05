@@ -1,6 +1,8 @@
 import {ADD_VOTE_POST, CREATE_POST, REMOVE_POST, REMOVE_VOTE_POST, SET_POSTS, UPDATE_POST} from "../actions/Post";
 
-const initialStatePosts = {};
+const initialStatePosts = {
+    posts:[]
+};
 
 
 export default function post(state = initialStatePosts, action) {

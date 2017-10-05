@@ -8,7 +8,9 @@ import {
 } from "../actions/Comment";
 import {REMOVE_POST} from "../actions/Post";
 
-const initialStateComments = {};
+const initialStateComments = {
+    comments:[]
+};
 
 
 export default function comment(state = initialStateComments, action) {

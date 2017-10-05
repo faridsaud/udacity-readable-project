@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react";
 import Category from "./Category";
-import {getCategories} from "../actions/Category";
+import {fetchGetCategories} from "../actions/Category";
 import {connect} from "react-redux";
 
 export class HomePage extends Component {
@@ -25,7 +25,6 @@ export class HomePage extends Component {
                         </div>
                     )
                 })
-
                 }
             </div>
 
@@ -38,7 +37,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getCategories: () => dispatch(getCategories())
+    getCategories: () => dispatch(fetchGetCategories())
 });
 
 

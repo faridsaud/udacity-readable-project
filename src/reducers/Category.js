@@ -1,9 +1,12 @@
 import {SET_CATEGORIES} from "../actions/Category";
 
+const initialStateCategory = {
+    categories:[]
+};
 
 
 
-export default function category(state={}, action) {
+export default function category(state=initialStateCategory, action) {
 
     switch (action.type) {
         case SET_CATEGORIES :
