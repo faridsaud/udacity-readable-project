@@ -12,34 +12,38 @@ export default function post(state = initialStatePosts, action) {
 
     switch (action.type) {
         case REMOVE_POST :
-            state.posts.find(post => post.id === action.id).deleted = true;
-            return state;
+            let newState = {...state};
+            newState.posts.find(post => post.id === action.id).deleted = true;
+            return newState;
 
         case ADD_CATEGORY_POSTS:
-            let posts = state.posts.filter((post)=> post.category!==action.categoryName);
+            let newState = {...state};
+            let posts = newState.posts.filter((post)=> post.category!==action.categoryName);
             posts = posts.concat(action.posts);
-            state.posts = posts;
-            return {
-                posts
-            };
+            newState.posts = posts;
+            return newState;
 
         case CREATE_POST:
-            state.posts.push(action.post);
-            return state;
+            let newState = {...state};
+            newState.posts.push(action.post);
+            return newState;
 
         case ADD_VOTE_POST:
-            state.posts.find(post => post.id === action.id).voteScore += 1;
-            return state;
+            let newState = {...state};
+            newState.posts.find(post => post.id === action.id).voteScore += 1;
+            return newState;
 
         case REMOVE_VOTE_POST:
-            state.posts.find(post => post.id === action.id).voteScore -= 1;
-            return state;
+            let newState = {...state};
+            newState.posts.find(post => post.id === action.id).voteScore -= 1;
+            return newState;
 
         case UPDATE_POST:
+            let newState = {...state};
             let post = state.posts.find(post => post.id === action.post.id);
             post.body = action.post.body;
             post.title = action.post.title;
-            return state;
+            return newState;
 
         case SET_POSTS:
             return {
