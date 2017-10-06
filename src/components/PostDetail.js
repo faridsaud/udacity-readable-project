@@ -7,6 +7,7 @@ import CommentsContainer from "./CommentsContainer";
 import Post from "./Post";
 import {connect} from "react-redux";
 import * as API from "../utils/Api";
+import {fetchGetAllComentsByPost} from "../actions/Comment";
 
 
 export class PostDetail extends Component {
@@ -16,17 +17,16 @@ export class PostDetail extends Component {
     };
 
     componentDidMount(){
-        console.log("id", this.props.match.params.id);
         API.getPostDetail(this.props.match.params.id).then((post) => {
-            console.log(post);
             this.setState({
                 post
             })
-        })
+        });
+        this.props.getAllComentsByPost(this.props.match.params.id);
     }
 
     render() {
-        let displayText = this.state.text;
+        console.log(this.props.comments);
         return (
             <div>
                 {
@@ -34,7 +34,11 @@ export class PostDetail extends Component {
                         <div className="container">
                             <Post post={this.state.post} isEditEnabled={true} isDeleteEnabled={true}/>
                             <br/>
-                            <CommentsContainer/>
+                            {
+                                this.props.comments && (
+                                    <CommentsContainer comments={this.props.comments}/>
+                                )
+                            }
                         </div>
                     )
                 }
@@ -44,11 +48,16 @@ export class PostDetail extends Component {
     }
 }
 
+const mapStateToProps = (state, props) => ({
+    comments: state.comment.comments.filter(comment => comment.parentId===props.match.params.id)
+});
+
 const mapDispatchToProps = dispatch => ({
+    getAllComentsByPost: (postId) => dispatch(fetchGetAllComentsByPost(postId))
 });
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(PostDetail)
 

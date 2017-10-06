@@ -1,9 +1,11 @@
+import * as API from "../utils/Api";
 export const REMOVE_COMMENT = "REMOVE_COMMENT"
 export const CREATE_COMMENT = "CREATE_COMMENT"
 export const ADD_VOTE_COMMENT = "ADD_VOTE_COMMENT"
 export const REMOVE_VOTE_COMMENT = "REMOVE_VOTE_COMMENT"
 export const UPDATE_COMMENT = "UPDATE_COMMENT"
 export const SET_COMMENTS = "SET_COMMENTS"
+export const ADD_COMMENTS = "ADD_COMMENTS"
 
 
 export function removeComment({id, parentId}) {
@@ -53,6 +55,23 @@ export function setComments(comments) {
         comments
     }
 }
+
+
+export function addComments({comments, postId}) {
+    return {
+        type: ADD_COMMENTS,
+        comments,
+        postId
+    }
+}
+
+export const fetchGetAllComentsByPost = (id) => dispatch => {
+    return API.getAllComentsByPost(id).then((comments) => {
+        dispatch(addComments({postId:id, comments}))
+    })
+};
+
+
 
 
 

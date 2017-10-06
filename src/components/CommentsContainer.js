@@ -3,8 +3,8 @@
  */
 import React, {Component} from "react";
 import OrderForm from "./OrderForm";
-import Comment from "./Comment";
 import CreateComment from "./CreateComment";
+import {Comment} from "./Comment";
 
 
 class CommentsContainer extends Component {
@@ -47,7 +47,19 @@ class CommentsContainer extends Component {
                         <br/>
                     </div>
                     }
-                    <Comment/>
+                    {
+                        this.props.comments && (
+                            this.props.comments.map((comment, index) => {
+                                    return (
+                                        <div key={index} >
+                                            <Comment comment={comment}/>
+                                            <br/>
+                                        </div>
+                                    )
+                                }
+                            )
+                        )
+                    }
 
                 </div>
             </div>

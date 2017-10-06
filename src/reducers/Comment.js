@@ -1,4 +1,5 @@
 import {
+    ADD_COMMENTS,
     ADD_VOTE_COMMENT,
     CREATE_COMMENT,
     REMOVE_COMMENT,
@@ -14,7 +15,7 @@ const initialStateComments = {
 
 
 export default function comment(state = initialStateComments, action) {
-    let newState = JSON.parse(JSON.stringify(initialStateComments));
+    let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case REMOVE_COMMENT :
             newState.comments.find(comment => comment.id === action.id).deleted = true;
@@ -40,6 +41,17 @@ export default function comment(state = initialStateComments, action) {
 
         case UPDATE_COMMENT:
             newState.comments.find(comment => comment.id === action.comment.id).body = action.comment.body;
+            return newState;
+
+        case ADD_COMMENTS:
+            newState.comments.sort((commentA, commentB) => {
+                if(commentA.voteScore>commentB.voteScore)
+                    return -1;
+                else
+                    return 1
+            });
+            newState.comments = newState.comments.filter(comment => comment.parentId !== action.postId);
+            newState.comments = newState.comments.concat(action.comments);
             return newState;
 
         case SET_COMMENTS:
