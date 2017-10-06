@@ -5,8 +5,21 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import TimeAgo from "react-timeago";
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
 
-class Post extends Component {
+export class Post extends Component {
+
+    upVoteOnClickHandler = (event) =>{
+        event.preventDefault();
+        this.props.upVotePost(this.props.post.id)
+    };
+
+
+    downVoteOnClickHandler = (event) =>{
+        event.preventDefault();
+        this.props.downVotePost(this.props.post.id)
+    };
 
     render() {
         let post = this.props.post;
@@ -26,9 +39,9 @@ class Post extends Component {
                         <div className="col-md-2 float-">
                             <div className="btn-group-vertical btn-group-sm">
                                 <button type="button" className="btn btn-dark btn-sm float-left"><i
-                                    className="material-icons">keyboard_arrow_up</i></button>
+                                    className="material-icons" onClick={this.upVoteOnClickHandler}>keyboard_arrow_up</i></button>
                                 <button type="button" className="btn btn-dark btn-sm float-left"><i
-                                    className="material-icons">keyboard_arrow_down</i></button>
+                                    className="material-icons" onClick={this.downVoteOnClickHandler}>keyboard_arrow_down</i></button>
                             </div>
                         </div>
                         <div className="col-md-9">
@@ -47,7 +60,17 @@ class Post extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    upVotePost: (postId) => dispatch(fetchUpVotePost(postId)),
+    downVotePost: (postId) => dispatch(fetchDownVotePost(postId))
+});
+
+
 Post.propTypes = {
     post:PropTypes.object.isRequired
 };
-export default Post;
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Post)

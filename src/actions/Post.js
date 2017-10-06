@@ -78,5 +78,16 @@ export const fetchGetPostByCategory = (categoryName) => dispatch => {
     )
 };
 
+export const fetchUpVotePost = (id) => dispatch => {
+    return API.upVotePost(id).then(() => {
+        dispatch(addVote({id}))
+    })
+};
+
+export const fetchDownVotePost = (id) => dispatch => {
+    return API.downVotePost(id).then(() => {
+        dispatch(removeVote({id}))
+    })
+};
 
 

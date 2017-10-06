@@ -14,7 +14,7 @@ const initialStateComments = {
 
 
 export default function comment(state = initialStateComments, action) {
-    let newState = {...state};
+    let newState = JSON.parse(JSON.stringify(initialStateComments));
     switch (action.type) {
         case REMOVE_COMMENT :
             newState.comments.find(comment => comment.id === action.id).deleted = true;

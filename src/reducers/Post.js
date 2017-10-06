@@ -9,7 +9,7 @@ const initialStatePosts = {
 
 
 export default function post(state = initialStatePosts, action) {
-    let newState = {...state};
+    let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case REMOVE_POST :
             newState.posts.find(post => post.id === action.id).deleted = true;

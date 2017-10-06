@@ -44,21 +44,17 @@ export const getPostDetail = (postId) => {
 export const upVotePost = (postId) => {
     const url = api + "posts/" + postId;
     return fetch(url, {
-        method: "POST", headers, body: {
-            option: "upVote"
-        }
+        method: "POST", headers, body: JSON.stringify({option: "upVote"})
     }).then(res => res.json())
 }
-
 
 export const downVotePost = (postId) => {
     const url = api + "posts/" + postId;
     return fetch(url, {
-        method: "POST", headers, body: {
-            option: "downVote"
-        }
+        method: "POST", headers, body: JSON.stringify({option: "downVote"})
     }).then(res => res.json())
 }
+
 
 export const updatePost = ({id, title, body}) => {
     const url = api + "posts/" + id;
