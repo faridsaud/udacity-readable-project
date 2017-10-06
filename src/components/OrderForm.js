@@ -19,6 +19,7 @@ class OrderForm extends Component {
             newState.orderBy.rateDesc = !prevState.orderBy.rateDesc;
             return newState;
         });
+        this.props.updatePostsOrder({by:"rate", desc:this.state.orderBy.rateDesc})
     };
 
 
@@ -28,6 +29,8 @@ class OrderForm extends Component {
             newState.orderBy.dateDesc = !prevState.orderBy.dateDesc;
             return newState;
         });
+
+        this.props.updatePostsOrder({by:"date", desc:this.state.orderBy.dateDesc})
     };
 
     render() {
