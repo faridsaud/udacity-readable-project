@@ -26,12 +26,26 @@ export class Post extends Component {
         return (
 
             <div className="card">
-
                 <div className="card-body">
-                    <Link to="/post/detail/123" className="card-title">
+                    <Link to={"/post/detail/" + post.id} className="card-title">
                         <h5>{post.title}</h5>
                     </Link>
                     <p className="card-text">{post.body}</p>
+                    {
+                        this.props.isDeleteEnabled && (
+                            <button type="button" className="btn btn-danger btn-sm float-right"><i
+                                className="material-icons">delete</i>
+                            </button>
+                        )
+                    }
+                    {
+                        this.props.isEditEnabled && (
+                            <Link to={"/post/update/"} className="btn btn-primary btn-sm float-right"><i
+                                className="material-icons">mode_edit</i>
+                            </Link>
+                        )
+                    }
+
 
                 </div>
                 <div className="card-footer">
@@ -66,9 +80,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-Post.propTypes = {
-    post:PropTypes.object.isRequired
-};
+
 
 export default connect(
     null,

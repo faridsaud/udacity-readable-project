@@ -31,7 +31,7 @@ class App extends Component {
                     <CreatePost isUpdate={true}/>
                 )}/>
                 <Route exact path='/post/detail/:id' render={(props) => (
-                    <PostDetail />
+                    <PostDetail match={props.match}/>
                 )}/>
             </div>
 
