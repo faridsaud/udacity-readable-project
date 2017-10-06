@@ -52,7 +52,7 @@ class CommentsContainer extends Component {
                             this.props.comments.map((comment, index) => {
                                     return (
                                         <div key={index} >
-                                            <Comment comment={comment}/>
+                                            <Comment comment={comment} isEditEnabled={true} isDeleteEnabled={true}/>
                                             <br/>
                                         </div>
                                     )

@@ -39,7 +39,7 @@ class CategoryHeader extends Component {
                         </Link>
                     </div>
                     <div className="col-md-2">
-                        <OrderForm updatePostsOrder={this.props.updatePostsOrder}/>
+                        <OrderForm updateOrder={this.props.updatePostsOrder}/>
                     </div>
                     <div className="col-md-2">
                         <div className="btn-group float-right" role="group" aria-label="Basic example">

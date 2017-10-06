@@ -2,6 +2,7 @@
  * Created by farid on 8/16/2017.
  */
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 
 
 class OrderForm extends Component {
@@ -19,7 +20,7 @@ class OrderForm extends Component {
             newState.orderBy.rateDesc = !prevState.orderBy.rateDesc;
             return newState;
         });
-        this.props.updatePostsOrder({by:"rate", desc:this.state.orderBy.rateDesc})
+        this.props.updateOrder({by: "rate", desc: this.state.orderBy.rateDesc})
     };
 
 
@@ -30,7 +31,7 @@ class OrderForm extends Component {
             return newState;
         });
 
-        this.props.updatePostsOrder({by:"date", desc:this.state.orderBy.dateDesc})
+        this.props.updateOrder({by: "date", desc: this.state.orderBy.dateDesc})
     };
 
     render() {
@@ -63,5 +64,7 @@ class OrderForm extends Component {
     }
 }
 
-OrderForm.propTypes = {};
+OrderForm.propTypes = {
+    updateOrder: PropTypes.func.isRequired
+};
 export default OrderForm;
