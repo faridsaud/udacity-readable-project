@@ -9,14 +9,63 @@ import {Comment} from "./Comment";
 
 class CommentsContainer extends Component {
     state = {
-        isCreateCommentOpen: false
+        isCreateCommentOpen: false,
+        comments:[]
     };
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            comments: nextProps.comments
+        });
+    }
 
     createCommentOnClickHandler = () => {
         this.setState((prevState) => {
             let newState = prevState;
             newState.isCreateCommentOpen = !newState.isCreateCommentOpen
             return newState;
+        })
+    };
+    
+    updateCommentsOrder = ({by, desc}) => {
+        let commentsOrdered = this.state.comments;
+        console.log('Ordering comments by' + by + 'desc' + desc);
+        if (by === "date" && desc) {
+            commentsOrdered = this.state.comments.sort((commentA, commentB) => {
+                if (commentA.timestamp > commentB.timestamp)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+        if (by === "date" && !desc) {
+            commentsOrdered = this.state.comments.sort((commentA, commentB) => {
+                if (commentA.timestamp < commentB.timestamp)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+        if (by === "rate" && !desc) {
+            commentsOrdered = this.state.comments.sort((commentA, commentB) => {
+                if (commentA.voteScore < commentB.voteScore)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+
+        if (by === "rate" && desc) {
+            commentsOrdered = this.state.comments.sort((commentA, commentB) => {
+                if (commentA.voteScore > commentB.voteScore)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+
+        this.setState({
+            comments:commentsOrdered
         })
     };
 
@@ -29,7 +78,7 @@ class CommentsContainer extends Component {
                             Comments
                         </div>
                         <div className="col-md-2">
-                            <OrderForm/>
+                            <OrderForm updateOrder={this.updateCommentsOrder}/>
                         </div>
                         <div className="col-md-2">
                             <div className="btn-group float-right" role="group">
@@ -48,8 +97,8 @@ class CommentsContainer extends Component {
                     </div>
                     }
                     {
-                        this.props.comments && (
-                            this.props.comments.map((comment, index) => {
+                        this.state.comments && (
+                            this.state.comments.map((comment, index) => {
                                     return (
                                         <div key={index} >
                                             <Comment comment={comment} isEditEnabled={true} isDeleteEnabled={true}/>
