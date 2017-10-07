@@ -2,15 +2,20 @@
  * Created by farid on 8/16/2017.
  */
 import React, {Component} from "react";
-import {connect} from "react-redux";
 import TimeAgo from "react-timeago";
-import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
 
-
-export class Comment extends Component {
+ class Comment extends Component {
 
     state = {
         isEditable: false
+    };
+
+    upVoteOnClickHandler = (event) =>{
+        event.preventDefault();
+        console.log(this);
+        this.props.upVoteComment('8xf0y6ziyjabvozdd253nd')
     };
 
     editOnClickHandler = () => {
@@ -104,14 +109,19 @@ export class Comment extends Component {
     }
 }
 
-Comment.propTypes = {};
-
 const mapStateToProps = (state, props) => ({
     comments: state.comments,
     posts: state.posts
 
 });
 
+const mapDispatchToProps = (dispatch) => ({
+    upVoteComment: (postId) => dispatch(fetchUpVotePost(postId)),
+    downVoteComment: (postId) => dispatch(fetchDownVotePost(postId))
+});
+
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Comment)

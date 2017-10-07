@@ -4,7 +4,7 @@
 import React, {Component} from "react";
 import OrderForm from "./OrderForm";
 import CreateComment from "./CreateComment";
-import {Comment} from "./Comment";
+import Comment from "./Comment";
 
 
 class CommentsContainer extends Component {
