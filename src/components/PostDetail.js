@@ -58,7 +58,7 @@ class PostDetail extends Component {
 const mapStateToProps = (state, props) => {
     console.log(state);
     return {
-        comments: state.comment.comments.filter(comment => comment.parentId===props.match.params.id),
+        comments: state.comment.comments.filter(comment => comment.parentId===props.match.params.id && !comment.deleted),
         post: state.post.posts.filter(post => post.id === props.match.params.id)[0]
     }
 };

@@ -11,11 +11,10 @@ export const SET_COMMENTS = "SET_COMMENTS"
 export const ADD_COMMENTS = "ADD_COMMENTS"
 
 
-export function removeComment({id, parentId}) {
+export function removeComment(id) {
     return {
         type: REMOVE_COMMENT,
-        id,
-        parentId
+        id
     }
 }
 
@@ -70,7 +69,7 @@ export function addComments({comments, postId}) {
 
 export const fetchGetAllComentsByPost = (id) => dispatch => {
     return API.getAllComentsByPost(id).then((comments) => {
-        dispatch(addComments({postId:id, comments}))
+        dispatch(addComments({postId: id, comments}))
     })
 };
 
@@ -97,4 +96,8 @@ export const fetchCreateComment = ({body, author, parentId}) => dispatch => {
 };
 
 
-
+export const fetchDeleteComment = (id) => dispatch => {
+    return API.deleteComment(id).then(() => {
+        dispatch(removeComment(id))
+    })
+};

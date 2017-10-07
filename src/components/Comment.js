@@ -4,7 +4,7 @@
 import React, {Component} from "react";
 import TimeAgo from "react-timeago";
 import {connect} from "react-redux";
-import {fetchDownVoteComment, fetchUpVoteComment} from "../actions/Comment";
+import {fetchDeleteComment, fetchDownVoteComment, fetchUpVoteComment} from "../actions/Comment";
 
 class Comment extends Component {
 
@@ -31,6 +31,10 @@ class Comment extends Component {
     componentDidMount() {
         console.log("Props COMMENT:", this.props);
     }
+
+    deleteCommentOnClickHandler=()=>{
+        this.props.deleteComment(this.props.comment.id);
+    };
 
     render() {
         let comment = this.props.comment;
@@ -87,7 +91,7 @@ class Comment extends Component {
                                     {
                                         this.props.isDeleteEnabled && (
                                             <button type="button" className="btn btn-danger btn-sm float-right"><i
-                                                className="material-icons">delete</i>
+                                                className="material-icons" onClick={this.deleteCommentOnClickHandler}>delete</i>
                                             </button>
                                         )
                                     }
@@ -114,19 +118,15 @@ class Comment extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
-    comments: state.comments,
-    posts: state.posts
-
-});
 
 const mapDispatchToProps = (dispatch) => ({
     upVoteComment: (commentId) => dispatch(fetchUpVoteComment(commentId)),
-    downVoteComment: (commentId) => dispatch(fetchDownVoteComment(commentId))
+    downVoteComment: (commentId) => dispatch(fetchDownVoteComment(commentId)),
+    deleteComment: (commentId => dispatch(fetchDeleteComment(commentId)))
 });
 
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(Comment)
