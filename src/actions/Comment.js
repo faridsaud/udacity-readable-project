@@ -101,3 +101,11 @@ export const fetchDeleteComment = (id) => dispatch => {
         dispatch(removeComment(id))
     })
 };
+
+export const fetchUpdateComment = ({id, body}) => dispatch => {
+    let timestamp = Date.now();
+    return API.updateComment({id, timestamp, body}).then(() => {
+        dispatch(updateComment({id, timestamp, body}))
+    })
+};
+

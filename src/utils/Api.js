@@ -108,7 +108,7 @@ export const downVoteComment = (commentId) => {
 export const updateComment = ({id, timestamp, body}) => {
     const url = api + "comments/" + id;
     const comment = {timestamp, body};
-    return fetch(url, {method: "POST", headers, body:comment}).then(res => res.json())
+    return fetch(url, {method: "PUT", headers, body:JSON.stringify(comment)}).then(res => res.json())
 }
 
 export const deleteComment = (commentId) => {

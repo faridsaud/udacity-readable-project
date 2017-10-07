@@ -22,7 +22,13 @@ class CreateComment extends Component {
             author: this.state.author,
             parentId: this.props.parentId
         })
+        this.setState({
+            body: '',
+            author: ''
+        })
     };
+
+
 
     bodyOnChangeHandler = (event)=>{
         this.setState({

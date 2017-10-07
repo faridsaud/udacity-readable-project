@@ -4,12 +4,19 @@
 import React, {Component} from "react";
 import TimeAgo from "react-timeago";
 import {connect} from "react-redux";
-import {fetchDeleteComment, fetchDownVoteComment, fetchUpVoteComment} from "../actions/Comment";
+import {fetchDeleteComment, fetchDownVoteComment, fetchUpdateComment, fetchUpVoteComment} from "../actions/Comment";
 
 class Comment extends Component {
 
     state = {
-        isEditable: false
+        isEditable: false,
+        comment: {}
+    };
+
+    bodyOnChangeHandler = (event) => {
+        let newState = this.state;
+        newState.comment.body = event.target.value;
+        this.setState(newState)
     };
 
     upVoteOnClickHandler = (event) => {
@@ -17,7 +24,7 @@ class Comment extends Component {
         this.props.upVoteComment(this.props.comment.id);
     };
 
-    downVoteOnClickHandler =  (event) => {
+    downVoteOnClickHandler = (event) => {
         event.preventDefault();
         this.props.downVoteComment(this.props.comment.id);
     };
@@ -28,16 +35,29 @@ class Comment extends Component {
         }))
     };
 
-    componentDidMount() {
-        console.log("Props COMMENT:", this.props);
+    updateCommentOnClickHandler = () =>{
+        this.props.updateComment(this.state.comment);
     }
 
-    deleteCommentOnClickHandler=()=>{
+    componentDidMount() {
+        this.setState({
+            comment: this.props.comment
+        });
+    }
+
+    deleteCommentOnClickHandler = () => {
         this.props.deleteComment(this.props.comment.id);
     };
 
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            comment: nextProps.comment
+        });
+    }
+
+
     render() {
-        let comment = this.props.comment;
+        let comment = this.state.comment;
         return (
             <div className="card">
                 <div className="card-body">
@@ -61,10 +81,11 @@ class Comment extends Component {
                                             <div className="form-group row">
                                                 <div className="col-sm-12">
                                     <textarea type="text" className="form-control" id="body"
-                                              placeholder="Enter your comment text here" value={comment.body}/>
+                                              placeholder="Enter your comment text here" value={comment.body}
+                                              onChange={this.bodyOnChangeHandler}/>
                                                 </div>
                                             </div>
-                                            <button type="submit" className="btn btn-primary">Update</button>
+                                            <button type="submit" className="btn btn-primary" onClick={this.updateCommentOnClickHandler}>Update</button>
                                             <br/>
                                         </div>
 
@@ -81,7 +102,7 @@ class Comment extends Component {
                                 <div className="col-md-9">
                                     <br/>
                                     <p className="small">
-                                        Author: {comment.author} - Created: <TimeAgo
+                                        Author: {comment.author} - Modified: <TimeAgo
                                         date={new Date(comment.timestamp)}/> <br/>
                                         Votes: {comment.voteScore}
                                     </p>
@@ -122,7 +143,8 @@ class Comment extends Component {
 const mapDispatchToProps = (dispatch) => ({
     upVoteComment: (commentId) => dispatch(fetchUpVoteComment(commentId)),
     downVoteComment: (commentId) => dispatch(fetchDownVoteComment(commentId)),
-    deleteComment: (commentId => dispatch(fetchDeleteComment(commentId)))
+    deleteComment: (commentId) => dispatch(fetchDeleteComment(commentId)),
+    updateComment: (comment) => dispatch(fetchUpdateComment(comment))
 });
 
 
