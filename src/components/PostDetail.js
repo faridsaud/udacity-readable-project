@@ -11,7 +11,7 @@ import {fetchGetAllComentsByPost} from "../actions/Comment";
 import {fetchPostDetail} from "../actions/Post";
 
 
-export class PostDetail extends Component {
+class PostDetail extends Component {
 
     state = {
         post:{}

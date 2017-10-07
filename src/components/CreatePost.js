@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {fetchGetCategories} from "../actions/Category";
 
 
-export class CreatePost extends Component {
+class CreatePost extends Component {
 
     state = {
         title: '',

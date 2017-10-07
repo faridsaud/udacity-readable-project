@@ -6,7 +6,7 @@ import Category from "./Category";
 import {fetchGetCategories} from "../actions/Category";
 import {connect} from "react-redux";
 
-export class HomePage extends Component {
+class HomePage extends Component {
 
     componentDidMount() {
         if(this.props.fetchCategories){

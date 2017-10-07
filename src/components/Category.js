@@ -9,7 +9,7 @@ import {fetchGetPostByCategory} from "../actions/Post";
 import PropTypes from "prop-types";
 
 
-export class Category extends Component {
+class Category extends Component {
 
     state = {
         posts: []

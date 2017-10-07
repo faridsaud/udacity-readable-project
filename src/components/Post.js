@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
 
-export class Post extends Component {
+class Post extends Component {
 
     upVoteOnClickHandler = (event) =>{
         event.preventDefault();
