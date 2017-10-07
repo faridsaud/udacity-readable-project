@@ -8,6 +8,7 @@ export const CREATE_POST = "CREATE_POST"
 export const REMOVE_POST = "REMOVE_POST"
 export const ADD_VOTE_POST = "ADD_VOTE_POST"
 export const REMOVE_VOTE_POST = "REMOVE_VOTE_POST"
+export const REPLACE_POST = "REPLACE_POST"
 
 
 export function setPosts(posts) {
@@ -63,6 +64,13 @@ export function removeVote({id}) {
     }
 }
 
+export function replacePost(post) {
+    return {
+        type: REPLACE_POST,
+        post
+    }
+}
+
 
 export const fetchCreatePost = ({title, body, author, category}) => dispatch => {
     let id = uuid.v1();
@@ -90,4 +98,10 @@ export const fetchDownVotePost = (id) => dispatch => {
     })
 };
 
+
+export const fetchPostDetail = (id) => dispatch => {
+    return API.getPostDetail(id).then((post) => {
+        dispatch(replacePost(post))
+    })
+};
 

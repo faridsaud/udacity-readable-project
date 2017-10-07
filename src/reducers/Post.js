@@ -1,10 +1,16 @@
 import {
-    ADD_CATEGORY_POSTS, ADD_VOTE_POST, CREATE_POST, REMOVE_POST, REMOVE_VOTE_POST, SET_POSTS,
+    ADD_CATEGORY_POSTS,
+    ADD_VOTE_POST,
+    CREATE_POST,
+    REMOVE_POST,
+    REMOVE_VOTE_POST,
+    REPLACE_POST,
+    SET_POSTS,
     UPDATE_POST
 } from "../actions/Post";
 
 const initialStatePosts = {
-    posts:[]
+    posts: []
 };
 
 
@@ -16,9 +22,9 @@ export default function post(state = initialStatePosts, action) {
             return newState;
 
         case ADD_CATEGORY_POSTS:
-            let posts = newState.posts.filter((post)=> post.category!==action.categoryName);
+            let posts = newState.posts.filter((post) => post.category !== action.categoryName);
             action.posts.sort((postA, postB) => {
-                if(postA.voteScore>postB.voteScore)
+                if (postA.voteScore > postB.voteScore)
                     return -1;
                 else
                     return 1
@@ -43,6 +49,11 @@ export default function post(state = initialStatePosts, action) {
             let post = state.posts.find(post => post.id === action.post.id);
             post.body = action.post.body;
             post.title = action.post.title;
+            return newState;
+
+        case REPLACE_POST:
+            newState.posts = newState.posts.filter((post) => post.id !== action.post.id);
+            newState.posts.push(action.post);
             return newState;
 
         case SET_POSTS:
