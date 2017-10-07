@@ -79,9 +79,9 @@ export const getAllComentsByPost = (postId) => {
 
 
 export const addComment = ({id, timestamp, body, author, parentId}) => {
-    const url = api + "/comments";
+    const url = api + "comments";
     const comment = {id, timestamp, body, author, parentId};
-    return fetch(url, {method: "POST", headers, body:comment}).then(res => res.json())
+    return fetch(url, {method: "POST", headers, body:JSON.stringify(comment)}).then(res => res.json())
 }
 
 

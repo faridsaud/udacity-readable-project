@@ -43,7 +43,7 @@ class PostDetail extends Component {
                             <br/>
                             {
                                 this.props.comments && (
-                                    <CommentsContainer comments={this.props.comments}/>
+                                    <CommentsContainer comments={this.props.comments} post={this.state.post}/>
                                 )
                             }
                         </div>

@@ -17,7 +17,7 @@ class Comment extends Component {
         this.props.upVoteComment(this.props.comment.id);
     };
 
-    downVoteOnClickHandler = (event) => {
+    downVoteOnClickHandler =  (event) => {
         event.preventDefault();
         this.props.downVoteComment(this.props.comment.id);
     };

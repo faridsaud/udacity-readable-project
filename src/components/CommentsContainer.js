@@ -92,7 +92,7 @@ class CommentsContainer extends Component {
                 <div className="card-body">
                     {this.state.isCreateCommentOpen === true &&
                     <div>
-                        <CreateComment/>
+                        <CreateComment parentId={this.props.post.id}/>
                         <br/>
                     </div>
                     }

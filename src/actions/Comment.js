@@ -1,4 +1,7 @@
 import * as API from "../utils/Api";
+import * as uuid from "uuid";
+
+
 export const REMOVE_COMMENT = "REMOVE_COMMENT"
 export const CREATE_COMMENT = "CREATE_COMMENT"
 export const ADD_VOTE_COMMENT = "ADD_VOTE_COMMENT"
@@ -80,6 +83,16 @@ export const fetchDownVoteComment = (id) => dispatch => {
 export const fetchUpVoteComment = (id) => dispatch => {
     return API.upVoteComment(id).then(() => {
         dispatch(addVote(id))
+    })
+};
+
+
+export const fetchCreateComment = ({body, author, parentId}) => dispatch => {
+    let id = uuid.v1();
+    let timestamp = Date.now();
+
+    return API.addComment({id, timestamp, body, author, parentId}).then((comment) => {
+        dispatch(createComment(comment))
     })
 };
 
