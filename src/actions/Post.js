@@ -41,7 +41,7 @@ export function createPost(post) {
     }
 }
 
-export function removePost({id}) {
+export function removePost(id) {
     return {
         type: REMOVE_POST,
         id
@@ -105,3 +105,8 @@ export const fetchPostDetail = (id) => dispatch => {
     })
 };
 
+export const fetchDeletePost = (id) => dispatch => {
+    return API.deletePost(id).then(() => {
+        dispatch(removePost(id))
+    })
+};

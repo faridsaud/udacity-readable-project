@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import TimeAgo from "react-timeago";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
+import {fetchDeletePost, fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
 
 class Post extends Component {
 
@@ -21,6 +21,11 @@ class Post extends Component {
         this.props.downVotePost(this.props.post.id)
     };
 
+    deletePostOnClickHandler = () =>{
+        this.props.deletePost(this.props.post.id)
+    }
+
+
     render() {
         let post = this.props.post;
         return (
@@ -33,9 +38,9 @@ class Post extends Component {
                     <p className="card-text">{post.body}</p>
                     {
                         this.props.isDeleteEnabled && (
-                            <button type="button" className="btn btn-danger btn-sm float-right"><i
-                                className="material-icons">delete</i>
-                            </button>
+                            <Link to={"/"} type="button" className="btn btn-danger btn-sm float-right"><i
+                                className="material-icons" onClick={this.deletePostOnClickHandler}>delete</i>
+                            </Link>
                         )
                     }
                     {
@@ -76,7 +81,8 @@ class Post extends Component {
 
 const mapDispatchToProps = dispatch => ({
     upVotePost: (postId) => dispatch(fetchUpVotePost(postId)),
-    downVotePost: (postId) => dispatch(fetchDownVotePost(postId))
+    downVotePost: (postId) => dispatch(fetchDownVotePost(postId)),
+    deletePost: (postId) => dispatch(fetchDeletePost(postId))
 });
 
 

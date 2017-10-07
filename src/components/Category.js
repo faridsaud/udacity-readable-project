@@ -93,7 +93,7 @@ Category.propTypes = {
 
 
 const mapStateToProps = (state, props) => {
-    let posts = state.post.posts.filter(post => post.category === props.name);
+    let posts = state.post.posts.filter(post => post.category === props.name && !post.deleted);
     return {
         posts
     }

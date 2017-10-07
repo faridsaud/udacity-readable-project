@@ -18,6 +18,8 @@ export default function post(state = initialStatePosts, action) {
     let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case REMOVE_POST :
+            console.log(newState.posts);
+            console.log(action.id);
             newState.posts.find(post => post.id === action.id).deleted = true;
             return newState;
 

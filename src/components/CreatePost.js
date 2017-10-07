@@ -5,52 +5,52 @@ import React, {Component} from "react";
 import {fetchCreatePost} from "../actions/Post";
 import {connect} from "react-redux";
 import {fetchGetCategories} from "../actions/Category";
+import {Link} from "react-router-dom";
 
 
 class CreatePost extends Component {
 
     state = {
         title: '',
-        body:'',
-        author:'',
-        category:''
+        body: '',
+        author: '',
+        category: ''
     };
 
 
     componentDidMount() {
-        if(this.props.fetchCategories){
+        if (this.props.fetchCategories) {
             console.log("Fetching categories in createPost");
             this.props.getCategories();
         }
     }
 
-    titleOnChangeHandler = (event) =>{
+    titleOnChangeHandler = (event) => {
         this.setState({
-            title:event.target.value
+            title: event.target.value
         })
     };
 
-    bodyOnChangeHandler = (event) =>{
+    bodyOnChangeHandler = (event) => {
         this.setState({
-            body:event.target.value
+            body: event.target.value
         })
     };
 
-    authorOnChangeHandler = (event) =>{
+    authorOnChangeHandler = (event) => {
         this.setState({
-            author:event.target.value
+            author: event.target.value
         })
     };
 
-    categoryOnChangeHandler = (event) =>{
+    categoryOnChangeHandler = (event) => {
         this.setState({
-            category:event.target.value
+            category: event.target.value
         })
     };
 
 
-    createPostOnClickHanlder =(event) =>{
-        event.preventDefault();
+    createPostOnClickHandler = () => {
         let post = {
             title: this.state.title,
             body: this.state.body,
@@ -68,22 +68,25 @@ class CreatePost extends Component {
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">Title</label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control" id="title" placeholder="Post title" onChange={this.titleOnChangeHandler} value={this.state.title}/>
+                            <input type="text" className="form-control" id="title" placeholder="Post title"
+                                   onChange={this.titleOnChangeHandler} value={this.state.title}/>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">Body</label>
                         <div className="col-sm-10">
-                            <textarea type="text" className="form-control" id="body" placeholder="Post text" onChange={this.bodyOnChangeHandler} value={this.state.body}/>
+                            <textarea type="text" className="form-control" id="body" placeholder="Post text"
+                                      onChange={this.bodyOnChangeHandler} value={this.state.body}/>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">Category</label>
                         <div className="col-sm-4">
-                            <select className="form-control" id="sel1" onChange={this.categoryOnChangeHandler} value={this.state.category}>
+                            <select className="form-control" id="sel1" onChange={this.categoryOnChangeHandler}
+                                    value={this.state.category}>
                                 {
-                                    this.props.categories.map((category, index)=>{
-                                        return(
+                                    this.props.categories.map((category, index) => {
+                                        return (
                                             <option key={index} value={category.name}>{category.name}</option>
 
                                         )
@@ -95,7 +98,8 @@ class CreatePost extends Component {
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">Author</label>
                         <div className="col-sm-10">
-                            <input type="text" className="form-control" id="author" placeholder="Author of the post" onChange={this.authorOnChangeHandler} value={this.state.author}/>
+                            <input type="text" className="form-control" id="author" placeholder="Author of the post"
+                                   onChange={this.authorOnChangeHandler} value={this.state.author}/>
                         </div>
                     </div>
                     <div className="form-group row float-right">
@@ -103,7 +107,7 @@ class CreatePost extends Component {
                             {this.props.isUpdate ? (
                                 <button type="submit" className="btn btn-primary">Update</button>
                             ) : (
-                                <button type="submit" className="btn btn-primary" onClick={this.createPostOnClickHanlder}>Create</button>
+                                <Link to={"/"} className="btn btn-primary" onClick={this.createPostOnClickHandler}>Create</Link>
                             )}
                         </div>
                     </div>
