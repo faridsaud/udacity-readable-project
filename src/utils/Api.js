@@ -93,18 +93,14 @@ export const getCommentDetail = (commentId) => {
 export const upVoteComment = (commentId) => {
     const url = api + "comments/" + commentId;
     return fetch(url, {
-        method: "POST", headers, body: {
-            option: "upVote"
-        }
+        method: "POST", headers, body: JSON.stringify({option: "upVote"})
     }).then(res => res.json())
 }
 
 export const downVoteComment = (commentId) => {
     const url = api + "comments/" + commentId;
     return fetch(url, {
-        method: "POST", headers, body: {
-            option: "downVote"
-        }
+        method: "POST", headers, body: JSON.stringify({option: "downVote"})
     }).then(res => res.json())
 }
 

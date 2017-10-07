@@ -25,7 +25,7 @@ export function createComment(comment) {
 }
 
 
-export function addVote({id}) {
+export function addVote(id) {
     return {
         type: ADD_VOTE_COMMENT,
         id
@@ -33,7 +33,7 @@ export function addVote({id}) {
 }
 
 
-export function removeVote({id}) {
+export function removeVote(id) {
     return {
         type: REMOVE_VOTE_COMMENT,
         id
@@ -71,7 +71,17 @@ export const fetchGetAllComentsByPost = (id) => dispatch => {
     })
 };
 
+export const fetchDownVoteComment = (id) => dispatch => {
+    return API.downVoteComment(id).then(() => {
+        dispatch(removeVote(id))
+    })
+};
 
+export const fetchUpVoteComment = (id) => dispatch => {
+    return API.upVoteComment(id).then(() => {
+        dispatch(addVote(id))
+    })
+};
 
 
 

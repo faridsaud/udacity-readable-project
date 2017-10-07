@@ -4,18 +4,22 @@
 import React, {Component} from "react";
 import TimeAgo from "react-timeago";
 import {connect} from "react-redux";
-import {fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
+import {fetchDownVoteComment, fetchUpVoteComment} from "../actions/Comment";
 
- class Comment extends Component {
+class Comment extends Component {
 
     state = {
         isEditable: false
     };
 
-    upVoteOnClickHandler = (event) =>{
+    upVoteOnClickHandler = (event) => {
         event.preventDefault();
-        console.log(this);
-        this.props.upVoteComment('8xf0y6ziyjabvozdd253nd')
+        this.props.upVoteComment(this.props.comment.id);
+    };
+
+    downVoteOnClickHandler = (event) => {
+        event.preventDefault();
+        this.props.downVoteComment(this.props.comment.id);
     };
 
     editOnClickHandler = () => {
@@ -82,7 +86,8 @@ import {fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
 
                                     {
                                         this.props.isDeleteEnabled && (
-                                            <button type="button" className="btn btn-danger btn-sm float-right"><i className="material-icons">delete</i>
+                                            <button type="button" className="btn btn-danger btn-sm float-right"><i
+                                                className="material-icons">delete</i>
                                             </button>
                                         )
                                     }
@@ -116,8 +121,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    upVoteComment: (postId) => dispatch(fetchUpVotePost(postId)),
-    downVoteComment: (postId) => dispatch(fetchDownVotePost(postId))
+    upVoteComment: (commentId) => dispatch(fetchUpVoteComment(commentId)),
+    downVoteComment: (commentId) => dispatch(fetchDownVoteComment(commentId))
 });
 
 
