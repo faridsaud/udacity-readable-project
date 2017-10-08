@@ -43,8 +43,6 @@ class CategoryHeader extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="btn-group float-right" role="group" aria-label="Basic example">
-                            <button type="button" className="btn btn-primary btn-sm" title="Order by"><i
-                                className="material-icons" onClick={this.changeOrderStatus}>reorder</i></button>
                             <button type="button" className="btn btn-primary btn-sm" title="Filter by"
                                     onClick={this.changeFilterStatus}><i className="material-icons">filter_list</i>
                             </button>
