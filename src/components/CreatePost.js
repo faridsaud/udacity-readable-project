@@ -2,15 +2,17 @@
  * Created by farid on 8/16/2017.
  */
 import React, {Component} from "react";
-import {fetchCreatePost} from "../actions/Post";
+import {fetchCreatePost, fetchPostDetail, fetchUpdatePost} from "../actions/Post";
 import {connect} from "react-redux";
 import {fetchGetCategories} from "../actions/Category";
 import {Link} from "react-router-dom";
+import * as API from "../utils/Api";
 
 
 class CreatePost extends Component {
 
     state = {
+        id: '',
         title: '',
         body: '',
         author: '',
@@ -20,9 +22,24 @@ class CreatePost extends Component {
 
     componentDidMount() {
         if (this.props.fetchCategories) {
-            console.log("Fetching categories in createPost");
             this.props.getCategories();
         }
+        if(this.props.isUpdate){
+            API.getPostDetail(this.props.match.params.id).then(post =>{
+                this.setState({
+                    id: post.id,
+                    title: post.title,
+                    body: post.body,
+                    author: post.author,
+                    category: post.category
+                })
+            })
+        }
+
+    }
+
+    updateOnClickHandler = () =>{
+        this.props.updatePost(this.state);
     }
 
     titleOnChangeHandler = (event) => {
@@ -62,6 +79,7 @@ class CreatePost extends Component {
     };
 
     render() {
+        let readOnly = this.props.isUpdate;
         return (
             <div className="container">
                 <form>
@@ -83,7 +101,7 @@ class CreatePost extends Component {
                         <label className="col-sm-2 col-form-label">Category</label>
                         <div className="col-sm-4">
                             <select className="form-control" id="sel1" onChange={this.categoryOnChangeHandler}
-                                    value={this.state.category}>
+                                    value={this.state.category} disabled={readOnly}>
                                 {
                                     this.props.categories.map((category, index) => {
                                         return (
@@ -99,13 +117,13 @@ class CreatePost extends Component {
                         <label className="col-sm-2 col-form-label">Author</label>
                         <div className="col-sm-10">
                             <input type="text" className="form-control" id="author" placeholder="Author of the post"
-                                   onChange={this.authorOnChangeHandler} value={this.state.author}/>
+                                   onChange={this.authorOnChangeHandler} value={this.state.author} disabled={readOnly}/>
                         </div>
                     </div>
                     <div className="form-group row float-right">
                         <div className="col-sm-10 ">
                             {this.props.isUpdate ? (
-                                <button type="submit" className="btn btn-primary">Update</button>
+                                <button type="submit" className="btn btn-primary" onClick={this.updateOnClickHandler}>Update</button>
                             ) : (
                                 <Link to={"/"} className="btn btn-primary" onClick={this.createPostOnClickHandler}>Create</Link>
                             )}
@@ -127,7 +145,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => ({
     createPost: (post) => dispatch(fetchCreatePost(post)),
-    getCategories: () => dispatch(fetchGetCategories())
+    getCategories: () => dispatch(fetchGetCategories()),
+    updatePost: (post) => dispatch(fetchUpdatePost(post))
 });
 
 CreatePost.propTypes = {};

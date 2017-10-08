@@ -45,7 +45,7 @@ class Post extends Component {
                     }
                     {
                         this.props.isEditEnabled && (
-                            <Link to={"/post/update/"} className="btn btn-primary btn-sm float-right"><i
+                            <Link to={"/post/update/" + post.id} className="btn btn-primary btn-sm float-right"><i
                                 className="material-icons">mode_edit</i>
                             </Link>
                         )

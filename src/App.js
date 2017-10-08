@@ -28,7 +28,7 @@ class App extends Component {
                     <CreatePost />
                 )}/>
                 <Route exact path='/post/update/:id' render={(props) => (
-                    <CreatePost isUpdate={true}/>
+                    <CreatePost isUpdate={true} match={props.match}/>
                 )}/>
                 <Route exact path='/post/detail/:id' render={(props) => (
                     <PostDetail match={props.match}/>

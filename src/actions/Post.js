@@ -110,3 +110,9 @@ export const fetchDeletePost = (id) => dispatch => {
         dispatch(removePost(id))
     })
 };
+
+export const fetchUpdatePost = ({title, body, id}) => dispatch => {
+    return API.updatePost({id, title, body}).then((post) =>
+        dispatch(updatePost(post))
+    )
+};

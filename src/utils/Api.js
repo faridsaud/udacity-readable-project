@@ -62,7 +62,7 @@ export const updatePost = ({id, title, body}) => {
         title,
         body
     }
-    return fetch(url, {method: "PUT", headers, body:post}).then(res => res.json())
+    return fetch(url, {method: "PUT", headers, body:JSON.stringify(post)}).then(res => res.json())
 }
 
 
