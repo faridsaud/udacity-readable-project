@@ -5,6 +5,7 @@ import React, {Component} from "react";
 import TimeAgo from "react-timeago";
 import {connect} from "react-redux";
 import {fetchDeleteComment, fetchDownVoteComment, fetchUpdateComment, fetchUpVoteComment} from "../actions/Comment";
+import PropTypes from 'prop-types';
 
 class Comment extends Component {
 
@@ -141,6 +142,9 @@ class Comment extends Component {
     }
 }
 
+Comment.propTypes = {
+    comment: PropTypes.object.isRequired
+};
 
 const mapDispatchToProps = (dispatch) => ({
     upVoteComment: (commentId) => dispatch(fetchUpVoteComment(commentId)),

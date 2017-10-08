@@ -5,6 +5,7 @@ import React, {Component} from "react";
 import OrderForm from "./OrderForm";
 import CreateComment from "./CreateComment";
 import Comment from "./Comment";
+import PropTypes from 'prop-types';
 
 
 class CommentsContainer extends Component {
@@ -117,5 +118,7 @@ class CommentsContainer extends Component {
     }
 }
 
-CommentsContainer.propTypes = {};
+CommentsContainer.propTypes = {
+    post: PropTypes.object.isRequired
+};
 export default CommentsContainer;

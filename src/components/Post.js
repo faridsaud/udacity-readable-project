@@ -87,6 +87,9 @@ const mapDispatchToProps = dispatch => ({
     deletePost: (postId) => dispatch(fetchDeletePost(postId))
 });
 
+Post.propTypes = {
+    post: PropTypes.object.isRequired
+};
 
 export default connect(
     null,
