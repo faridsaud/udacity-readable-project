@@ -123,7 +123,7 @@ class CreatePost extends Component {
                     <div className="form-group row float-right">
                         <div className="col-sm-10 ">
                             {this.props.isUpdate ? (
-                                <button type="submit" className="btn btn-primary" onClick={this.updateOnClickHandler}>Update</button>
+                                <Link to={"/"} className="btn btn-primary" onClick={this.updateOnClickHandler}>Update</Link>
                             ) : (
                                 <Link to={"/"} className="btn btn-primary" onClick={this.createPostOnClickHandler}>Create</Link>
                             )}
