@@ -21,7 +21,7 @@ class App extends Component {
                 <Route exact path='/' render={() => (
                     <HomePage />
                 )}/>
-                <Route exact path='/category/:categoryName' render={(props) => (
+                <Route exact path='/:categoryName' render={(props) => (
                     <CategoryHomePage match={props.match}/>
                 )}/>
                 <Route exact path='/post/create' render={(props) => (
@@ -30,7 +30,7 @@ class App extends Component {
                 <Route exact path='/post/update/:id' render={(props) => (
                     <CreatePost isUpdate={true} match={props.match}/>
                 )}/>
-                <Route exact path='/post/detail/:id' render={(props) => (
+                <Route exact path='/:categoryName/:id' render={(props) => (
                     <PostDetail match={props.match}/>
                 )}/>
             </div>

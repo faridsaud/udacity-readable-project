@@ -22,19 +22,14 @@ class CategoryHeader extends Component {
         }))
     };
 
-    changeOrderStatus = () => {
-        this.setState(prevState => ({
-            isOrderByOpen: !prevState.isOrderByOpen,
-            isFilterByOpen: false
-        }))
-    };
+
 
     render() {
         return (
             <div className="card-header">
                 <div className="row">
                     <div className="col-md-8">
-                        <Link to={"/category/" + this.props.name}>
+                        <Link to={"/" + this.props.name}>
                             <h4>{this.props.name}</h4>
                         </Link>
                     </div>

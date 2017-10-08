@@ -10,18 +10,18 @@ import {fetchDeletePost, fetchDownVotePost, fetchUpVotePost} from "../actions/Po
 
 class Post extends Component {
 
-    upVoteOnClickHandler = (event) =>{
+    upVoteOnClickHandler = (event) => {
         event.preventDefault();
         this.props.upVotePost(this.props.post.id)
     };
 
 
-    downVoteOnClickHandler = (event) =>{
+    downVoteOnClickHandler = (event) => {
         event.preventDefault();
         this.props.downVotePost(this.props.post.id)
     };
 
-    deletePostOnClickHandler = () =>{
+    deletePostOnClickHandler = () => {
         this.props.deletePost(this.props.post.id)
     }
 
@@ -32,7 +32,7 @@ class Post extends Component {
 
             <div className="card">
                 <div className="card-body">
-                    <Link to={"/post/detail/" + post.id} className="card-title">
+                    <Link to={"/" + post.category + "/" + post.id} className="card-title">
                         <h5>{post.title}</h5>
                     </Link>
                     <p className="card-text">{post.body}</p>
@@ -58,9 +58,11 @@ class Post extends Component {
                         <div className="col-md-2 float-">
                             <div className="btn-group-vertical btn-group-sm">
                                 <button type="button" className="btn btn-dark btn-sm float-left"><i
-                                    className="material-icons" onClick={this.upVoteOnClickHandler}>keyboard_arrow_up</i></button>
+                                    className="material-icons" onClick={this.upVoteOnClickHandler}>keyboard_arrow_up</i>
+                                </button>
                                 <button type="button" className="btn btn-dark btn-sm float-left"><i
-                                    className="material-icons" onClick={this.downVoteOnClickHandler}>keyboard_arrow_down</i></button>
+                                    className="material-icons"
+                                    onClick={this.downVoteOnClickHandler}>keyboard_arrow_down</i></button>
                             </div>
                         </div>
                         <div className="col-md-9">
@@ -68,7 +70,7 @@ class Post extends Component {
                                 Author: {post.author} <br/>
                                 Created: <TimeAgo date={new Date(post.timestamp)}/> <br/>
                                 Votes: {post.voteScore}
-                                </p>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -84,8 +86,6 @@ const mapDispatchToProps = dispatch => ({
     downVotePost: (postId) => dispatch(fetchDownVotePost(postId)),
     deletePost: (postId) => dispatch(fetchDeletePost(postId))
 });
-
-
 
 
 export default connect(
