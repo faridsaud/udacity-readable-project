@@ -93,6 +93,12 @@ Category.propTypes = {
 
 const mapStateToProps = (state, props) => {
     let posts = state.post.posts.filter(post => post.category === props.name && !post.deleted);
+    posts.sort((postA, postB) => {
+        if (postA.voteScore > postB.voteScore)
+            return -1;
+        else
+            return 1
+    });
     return {
         posts
     }

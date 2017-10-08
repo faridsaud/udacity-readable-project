@@ -23,12 +23,6 @@ export default function post(state = initialStatePosts, action) {
 
         case ADD_CATEGORY_POSTS:
             let posts = newState.posts.filter((post) => post.category !== action.categoryName);
-            action.posts.sort((postA, postB) => {
-                if (postA.voteScore > postB.voteScore)
-                    return -1;
-                else
-                    return 1
-            });
             posts = posts.concat(action.posts);
             newState.posts = posts;
             return newState;

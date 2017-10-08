@@ -44,12 +44,6 @@ export default function comment(state = initialStateComments, action) {
             return newState;
 
         case ADD_COMMENTS:
-            newState.comments.sort((commentA, commentB) => {
-                if (commentA.voteScore > commentB.voteScore)
-                    return -1;
-                else
-                    return 1
-            });
             newState.comments = newState.comments.filter(comment => comment.parentId !== action.postId);
             newState.comments = newState.comments.concat(action.comments);
             return newState;
