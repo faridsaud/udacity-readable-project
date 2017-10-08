@@ -23,7 +23,6 @@ class CategoryHeader extends Component {
     };
 
 
-
     render() {
         return (
             <div className="card-header">

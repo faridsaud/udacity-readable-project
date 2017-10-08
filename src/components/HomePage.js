@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 class HomePage extends Component {
 
     componentDidMount() {
-        if(this.props.fetchCategories){
+        if (this.props.fetchCategories) {
             this.props.getCategories();
         }
     }

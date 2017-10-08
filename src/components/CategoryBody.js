@@ -12,14 +12,14 @@ class CategoryBody extends Component {
         return (
             <div className="card-body">
                 <div className="row">
-                        {
-                            this.props.posts.map((post,index)=>(
-                                <div  className="col-md-4" key={index}>
-                                    <Post post={post}/>
-                                    <br/>
-                                </div>
-                            ))
-                        }
+                    {
+                        this.props.posts.map((post, index) => (
+                            <div className="col-md-4" key={index}>
+                                <Post post={post}/>
+                                <br/>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         )
@@ -27,6 +27,6 @@ class CategoryBody extends Component {
 }
 
 CategoryBody.propTypes = {
-    posts:PropTypes.array.isRequired
+    posts: PropTypes.array.isRequired
 };
 export default CategoryBody;

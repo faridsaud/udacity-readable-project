@@ -35,7 +35,7 @@ class Comment extends Component {
         }))
     };
 
-    updateCommentOnClickHandler = () =>{
+    updateCommentOnClickHandler = () => {
         this.props.updateComment(this.state.comment);
     }
 
@@ -49,7 +49,7 @@ class Comment extends Component {
         this.props.deleteComment(this.props.comment.id);
     };
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         this.setState({
             comment: nextProps.comment
         });
@@ -85,7 +85,9 @@ class Comment extends Component {
                                               onChange={this.bodyOnChangeHandler}/>
                                                 </div>
                                             </div>
-                                            <button type="submit" className="btn btn-primary" onClick={this.updateCommentOnClickHandler}>Update</button>
+                                            <button type="submit" className="btn btn-primary"
+                                                    onClick={this.updateCommentOnClickHandler}>Update
+                                            </button>
                                             <br/>
                                         </div>
 

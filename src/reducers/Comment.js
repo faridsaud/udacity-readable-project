@@ -10,7 +10,7 @@ import {
 import {REMOVE_POST} from "../actions/Post";
 
 const initialStateComments = {
-    comments:[]
+    comments: []
 };
 
 
@@ -45,7 +45,7 @@ export default function comment(state = initialStateComments, action) {
 
         case ADD_COMMENTS:
             newState.comments.sort((commentA, commentB) => {
-                if(commentA.voteScore>commentB.voteScore)
+                if (commentA.voteScore > commentB.voteScore)
                     return -1;
                 else
                     return 1

@@ -1,4 +1,3 @@
-
 const api = "http://127.0.0.1:3001/"
 
 let token = localStorage.token
@@ -32,7 +31,7 @@ export const getPosts = () => {
 export const addPost = ({id, timestamp, title, body, author, category}) => {
     const url = api + "posts";
     let post = {id, timestamp, title, body, author, category};
-    return fetch(url, {method: "POST", headers, body:JSON.stringify(post)}).then(res => res.json())
+    return fetch(url, {method: "POST", headers, body: JSON.stringify(post)}).then(res => res.json())
 }
 
 
@@ -62,7 +61,7 @@ export const updatePost = ({id, title, body}) => {
         title,
         body
     }
-    return fetch(url, {method: "PUT", headers, body:JSON.stringify(post)}).then(res => res.json())
+    return fetch(url, {method: "PUT", headers, body: JSON.stringify(post)}).then(res => res.json())
 }
 
 
@@ -81,7 +80,7 @@ export const getAllComentsByPost = (postId) => {
 export const addComment = ({id, timestamp, body, author, parentId}) => {
     const url = api + "comments";
     const comment = {id, timestamp, body, author, parentId};
-    return fetch(url, {method: "POST", headers, body:JSON.stringify(comment)}).then(res => res.json())
+    return fetch(url, {method: "POST", headers, body: JSON.stringify(comment)}).then(res => res.json())
 }
 
 
@@ -108,7 +107,7 @@ export const downVoteComment = (commentId) => {
 export const updateComment = ({id, timestamp, body}) => {
     const url = api + "comments/" + id;
     const comment = {timestamp, body};
-    return fetch(url, {method: "PUT", headers, body:JSON.stringify(comment)}).then(res => res.json())
+    return fetch(url, {method: "PUT", headers, body: JSON.stringify(comment)}).then(res => res.json())
 }
 
 export const deleteComment = (commentId) => {

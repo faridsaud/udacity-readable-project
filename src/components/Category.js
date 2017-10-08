@@ -65,7 +65,7 @@ class Category extends Component {
         }
 
         this.setState({
-            posts:postsOrdered
+            posts: postsOrdered
         })
     };
 

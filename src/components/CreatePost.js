@@ -24,8 +24,8 @@ class CreatePost extends Component {
         if (this.props.fetchCategories) {
             this.props.getCategories();
         }
-        if(this.props.isUpdate){
-            API.getPostDetail(this.props.match.params.id).then(post =>{
+        if (this.props.isUpdate) {
+            API.getPostDetail(this.props.match.params.id).then(post => {
                 this.setState({
                     id: post.id,
                     title: post.title,
@@ -38,7 +38,7 @@ class CreatePost extends Component {
 
     }
 
-    updateOnClickHandler = () =>{
+    updateOnClickHandler = () => {
         this.props.updatePost(this.state);
     }
 
@@ -123,7 +123,8 @@ class CreatePost extends Component {
                     <div className="form-group row float-right">
                         <div className="col-sm-10 ">
                             {this.props.isUpdate ? (
-                                <Link to={"/"} className="btn btn-primary" onClick={this.updateOnClickHandler}>Update</Link>
+                                <Link to={"/"} className="btn btn-primary"
+                                      onClick={this.updateOnClickHandler}>Update</Link>
                             ) : (
                                 <Link to={"/"} className="btn btn-primary" onClick={this.createPostOnClickHandler}>Create</Link>
                             )}

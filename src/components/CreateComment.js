@@ -29,16 +29,15 @@ class CreateComment extends Component {
     };
 
 
-
-    bodyOnChangeHandler = (event)=>{
+    bodyOnChangeHandler = (event) => {
         this.setState({
-            body:event.target.value
+            body: event.target.value
         })
     };
 
-    authorOnChangeHandler = (event)=>{
+    authorOnChangeHandler = (event) => {
         this.setState({
-            author:event.target.value
+            author: event.target.value
         })
     };
 
@@ -49,18 +48,21 @@ class CreateComment extends Component {
                     <div className="form-group row">
                         <div className="col-sm-10">
                             <textarea type="text" className="form-control" id="body"
-                                      placeholder="Enter your comment text here" onChange={this.bodyOnChangeHandler} value={this.state.body}/>
+                                      placeholder="Enter your comment text here" onChange={this.bodyOnChangeHandler}
+                                      value={this.state.body}/>
                         </div>
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-10">
                             <input type="text" className="form-control" id="author"
-                                   placeholder="Enter author here" onChange={this.authorOnChangeHandler} value={this.state.author}/>
+                                   placeholder="Enter author here" onChange={this.authorOnChangeHandler}
+                                   value={this.state.author}/>
                         </div>
                     </div>
                     <div className="form-group row float-right">
                         <div className="col-sm-2 ">
-                            <button type="submit" className="btn btn-primary" onClick={this.createComment}>Create</button>
+                            <button type="submit" className="btn btn-primary" onClick={this.createComment}>Create
+                            </button>
                         </div>
                     </div>
                 </div>

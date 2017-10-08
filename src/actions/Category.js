@@ -10,7 +10,7 @@ export function setCategories(categories) {
 }
 
 export const fetchGetCategories = () => dispatch => (
-    API.getCategories().then(data =>{
+    API.getCategories().then(data => {
         dispatch(setCategories(data.categories))
     })
 );

@@ -19,13 +19,13 @@ class App extends Component {
                 <Menu/>
                 <br/>
                 <Route exact path='/' render={() => (
-                    <HomePage />
+                    <HomePage/>
                 )}/>
                 <Route exact path='/:categoryName' render={(props) => (
                     <CategoryHomePage match={props.match}/>
                 )}/>
                 <Route exact path='/post/create' render={(props) => (
-                    <CreatePost />
+                    <CreatePost/>
                 )}/>
                 <Route exact path='/post/update/:id' render={(props) => (
                     <CreatePost isUpdate={true} match={props.match}/>

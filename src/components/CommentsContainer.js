@@ -10,7 +10,7 @@ import Comment from "./Comment";
 class CommentsContainer extends Component {
     state = {
         isCreateCommentOpen: false,
-        comments:[]
+        comments: []
     };
 
     componentWillReceiveProps(nextProps) {
@@ -26,7 +26,7 @@ class CommentsContainer extends Component {
             return newState;
         })
     };
-    
+
     updateCommentsOrder = ({by, desc}) => {
         let commentsOrdered = this.state.comments;
         console.log('Ordering comments by' + by + 'desc' + desc);
@@ -65,7 +65,7 @@ class CommentsContainer extends Component {
         }
 
         this.setState({
-            comments:commentsOrdered
+            comments: commentsOrdered
         })
     };
 
@@ -100,7 +100,7 @@ class CommentsContainer extends Component {
                         this.state.comments && (
                             this.state.comments.map((comment, index) => {
                                     return (
-                                        <div key={index} >
+                                        <div key={index}>
                                             <Comment comment={comment} isEditEnabled={true} isDeleteEnabled={true}/>
                                             <br/>
                                         </div>
