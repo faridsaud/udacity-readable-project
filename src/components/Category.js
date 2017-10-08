@@ -29,7 +29,6 @@ class Category extends Component {
 
     updatePostsOrder = ({by, desc}) => {
         let postsOrdered = this.state.posts;
-        console.log('Ordering posts by' + by + 'desc' + desc);
         if (by === "date" && desc) {
             postsOrdered = this.state.posts.sort((postA, postB) => {
                 if (postA.timestamp > postB.timestamp)

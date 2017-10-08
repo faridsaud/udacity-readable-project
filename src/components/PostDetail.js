@@ -23,7 +23,6 @@ class PostDetail extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        console.log(newProps);
         if (newProps.post) {
             this.setState({
                 post: newProps.post
@@ -33,7 +32,6 @@ class PostDetail extends Component {
     }
 
     render() {
-        console.log(this.props.comments);
         return (
             <div>
                 {
@@ -56,7 +54,6 @@ class PostDetail extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-    console.log(state);
     return {
         comments: state.comment.comments.filter(comment => comment.parentId === props.match.params.id && !comment.deleted),
         post: state.post.posts.filter(post => post.id === props.match.params.id)[0]

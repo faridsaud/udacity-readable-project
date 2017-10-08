@@ -29,7 +29,6 @@ class CommentsContainer extends Component {
 
     updateCommentsOrder = ({by, desc}) => {
         let commentsOrdered = this.state.comments;
-        console.log('Ordering comments by' + by + 'desc' + desc);
         if (by === "date" && desc) {
             commentsOrdered = this.state.comments.sort((commentA, commentB) => {
                 if (commentA.timestamp > commentB.timestamp)

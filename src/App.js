@@ -9,10 +9,6 @@ import PostDetail from "./components/PostDetail";
 
 class App extends Component {
 
-    componentDidMount() {
-        console.log("Props APP:", this.props);
-    }
-
     render() {
         return (
             <div className="app">
