@@ -4,19 +4,18 @@ This project was developed using the react-redux library to manage the state of 
 
 ## Table of Contents
 
-- [Requirements](#requirements)
-- [Instructions](#instructions)
+- [Requirements](##requirements)
+- [Instructions](##instructions)
 
  
-##Requirements
+## Requirements
 
-You will need to have the API server running, you can get it from: 
+You will need to have the API server running, you can get it from: [API server](https://github.com/udacity/reactnd-project-readable-starter)
 
-[API server] (https://github.com/udacity/reactnd-project-readable-starter)
-
-##Instructions
+## Instructions
 To start the application you will need to:
 
--Install dependencies with *npm install*
--Start the server with *npm start*
+- Install dependencies with *npm install*
+- Start the server with *npm start*
+
 
