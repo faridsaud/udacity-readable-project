@@ -66,6 +66,11 @@ class CreatePost extends Component {
         })
     };
 
+    componentWillReceiveProps = (nextProps) => {
+        this.setState({
+            category: nextProps.categories[0].name
+        });
+    }
 
     createPostOnClickHandler = () => {
         let post = {
