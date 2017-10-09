@@ -11,7 +11,7 @@ export default function category(state = initialStateCategory, action) {
     switch (action.type) {
         case SET_CATEGORIES :
             return {
-                categories: action.categories,
+                categories: [...action.categories],
                 isFetch: true
             };
         default :

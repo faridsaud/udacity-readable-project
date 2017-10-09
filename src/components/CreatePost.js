@@ -21,6 +21,11 @@ class CreatePost extends Component {
 
 
     componentDidMount() {
+        if(this.props.categories.length>0){
+            this.setState({
+                category: this.props.categories[0].name
+            });
+        }
         if (this.props.fetchCategories) {
             this.props.getCategories();
         }
@@ -40,7 +45,7 @@ class CreatePost extends Component {
 
     updateOnClickHandler = () => {
         this.props.updatePost(this.state);
-    }
+    };
 
     titleOnChangeHandler = (event) => {
         this.setState({
@@ -66,11 +71,14 @@ class CreatePost extends Component {
         })
     };
 
-    componentWillReceiveProps = (nextProps) => {
-        this.setState({
-            category: nextProps.categories[0].name
-        });
-    }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps);
+        if(nextProps.categories){
+            this.setState({
+                category: nextProps.categories[0].name
+            });
+        }
+    };
 
     createPostOnClickHandler = () => {
         let post = {
@@ -148,6 +156,7 @@ const mapStateToProps = (state, props) => ({
     categories: state.category.categories,
     fetchCategories: !state.category.isFetch
 });
+
 
 const mapDispatchToProps = dispatch => ({
     createPost: (post) => dispatch(fetchCreatePost(post)),

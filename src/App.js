@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./App.css";
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Menu from "./components/Menu";
 import CategoryHomePage from "./components/CategoryHomePage";
@@ -14,21 +14,24 @@ class App extends Component {
             <div className="app">
                 <Menu/>
                 <br/>
-                <Route exact path='/' render={() => (
-                    <HomePage/>
-                )}/>
-                <Route exact path='/:categoryName' render={(props) => (
-                    <CategoryHomePage match={props.match}/>
-                )}/>
-                <Route exact path='/post/create' render={(props) => (
-                    <CreatePost/>
-                )}/>
-                <Route exact path='/post/update/:id' render={(props) => (
-                    <CreatePost isUpdate={true} match={props.match}/>
-                )}/>
-                <Route exact path='/:categoryName/:id' render={(props) => (
-                    <PostDetail match={props.match}/>
-                )}/>
+                <Switch>
+                    <Route exact path='/' render={() => (
+                        <HomePage/>
+                    )}/>
+                    <Route exact path='/:categoryName' render={(props) => (
+                        <CategoryHomePage match={props.match}/>
+                    )}/>
+                    <Route exact path='/post/create' render={(props) => (
+                        <CreatePost/>
+                    )}/>
+                    <Route exact path='/post/update/:id' render={(props) => (
+                        <CreatePost isUpdate={true} match={props.match}/>
+                    )}/>
+                    <Route exact path='/:categoryName/:id' render={(props) => (
+                        <PostDetail match={props.match}/>
+                    )}/>
+                </Switch>
+
             </div>
 
 
