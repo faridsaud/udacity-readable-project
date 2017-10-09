@@ -73,7 +73,7 @@ class OrderForm extends Component {
                 </div>
                 <div className="col-md-4">
                     <button type="button" className="btn btn btn-dark btn-sm " title="Order by author"
-                            onClick={this.dateOnClickHandler}>Author
+                            onClick={this.authorOnClickHandler}>Author
                         {orderBy.authorDesc ? (
                             <i className="material-icons">keyboard_arrow_up</i>
                         ) : (
