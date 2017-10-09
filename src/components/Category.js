@@ -63,6 +63,25 @@ class Category extends Component {
             })
         }
 
+        if (by === "author" && desc) {
+            postsOrdered = this.state.posts.sort((postA, postB) => {
+                if (postA.author > postB.author)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+
+        if (by === "author" && !desc) {
+            postsOrdered = this.state.posts.sort((postA, postB) => {
+                if (postA.author < postB.author)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+
+
         this.setState({
             posts: postsOrdered
         })
