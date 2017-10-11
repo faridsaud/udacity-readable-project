@@ -6,9 +6,14 @@ import {Link} from "react-router-dom";
 import TimeAgo from "react-timeago";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {fetchDeletePost, fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
+import {fetchDeletePost, fetchDownVotePost, fetchPostDetail, fetchUpVotePost} from "../actions/Post";
+import {fetchGetAllComentsByPost} from "../actions/Comment";
 
 class Post extends Component {
+
+    componentDidMount(){
+        this.props.getAllCommentsByPost(this.props.post.id);
+    }
 
     upVoteOnClickHandler = (event) => {
         event.preventDefault();
@@ -69,7 +74,7 @@ class Post extends Component {
                             <p>
                                 Author: {post.author} <br/>
                                 Created: <TimeAgo date={new Date(post.timestamp)}/> <br/>
-                                Votes: {post.voteScore}
+                                Votes: {post.voteScore} | #Comments: {this.props.comments.length}
                             </p>
                         </div>
                     </div>
@@ -80,8 +85,15 @@ class Post extends Component {
         )
     }
 }
+const mapStateToProps = (state, props) => {
+    let comments = state.comment.comments.filter(comment => comment.parentId === props.post.id && !comment.deleted);
+    return {
+        comments: comments
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
+    getAllCommentsByPost: (postId) => dispatch(fetchGetAllComentsByPost(postId)),
     upVotePost: (postId) => dispatch(fetchUpVotePost(postId)),
     downVotePost: (postId) => dispatch(fetchDownVotePost(postId)),
     deletePost: (postId) => dispatch(fetchDeletePost(postId))
@@ -92,6 +104,6 @@ Post.propTypes = {
 };
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Post)

@@ -19,7 +19,6 @@ class PostDetail extends Component {
 
     componentDidMount() {
         this.props.getPostDetail(this.props.match.params.id);
-        this.props.getAllComentsByPost(this.props.match.params.id);
     }
 
     componentWillReceiveProps(newProps) {
@@ -68,8 +67,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    getPostDetail: (postId) => dispatch(fetchPostDetail(postId)),
-    getAllComentsByPost: (postId) => dispatch(fetchGetAllComentsByPost(postId))
+    getPostDetail: (postId) => dispatch(fetchPostDetail(postId))
 });
 
 export default connect(
