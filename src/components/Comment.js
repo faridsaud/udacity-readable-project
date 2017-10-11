@@ -38,7 +38,10 @@ class Comment extends Component {
 
     updateCommentOnClickHandler = () => {
         this.props.updateComment(this.state.comment);
-    }
+        this.setState((prevState)=>({
+            isEditable:!prevState.isEditable
+        }));
+    };
 
     componentDidMount() {
         this.setState({
@@ -86,7 +89,7 @@ class Comment extends Component {
                                               onChange={this.bodyOnChangeHandler}/>
                                                 </div>
                                             </div>
-                                            <button type="submit" className="btn btn-primary"
+                                            <button className="btn btn-primary"
                                                     onClick={this.updateCommentOnClickHandler}>Update
                                             </button>
                                             <br/>
