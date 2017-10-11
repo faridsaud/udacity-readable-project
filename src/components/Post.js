@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import TimeAgo from "react-timeago";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {fetchDeletePost, fetchDownVotePost, fetchPostDetail, fetchUpVotePost} from "../actions/Post";
+import {fetchDeletePost, fetchDownVotePost, fetchUpVotePost} from "../actions/Post";
 import {fetchGetAllComentsByPost} from "../actions/Comment";
 
 class Post extends Component {
@@ -28,7 +28,7 @@ class Post extends Component {
 
     deletePostOnClickHandler = () => {
         this.props.deletePost(this.props.post.id)
-    }
+    };
 
 
     render() {

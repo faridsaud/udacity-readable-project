@@ -2,12 +2,9 @@
  * Created by farid on 8/16/2017.
  */
 import React, {Component} from "react";
-import Link from "react-router-dom/es/Link";
 import CommentsContainer from "./CommentsContainer";
 import Post from "./Post";
 import {connect} from "react-redux";
-import * as API from "../utils/Api";
-import {fetchGetAllComentsByPost} from "../actions/Comment";
 import {fetchPostDetail} from "../actions/Post";
 
 
