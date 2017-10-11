@@ -64,6 +64,25 @@ class CommentsContainer extends Component {
             })
         }
 
+        if (by === "author" && !desc) {
+            commentsOrdered = this.state.comments.sort((commentA, commentB) => {
+                if (commentA.author < commentB.author)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+
+        if (by === "author" && desc) {
+            commentsOrdered = this.state.comments.sort((commentA, commentB) => {
+                if (commentA.author > commentB.author)
+                    return -1;
+                else
+                    return 1;
+            })
+        }
+
+
         this.setState({
             comments: commentsOrdered
         })
@@ -74,10 +93,10 @@ class CommentsContainer extends Component {
             <div className="card">
                 <h4 className="card-header">
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-md-7">
                             Comments
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                             <OrderForm updateOrder={this.updateCommentsOrder}/>
                         </div>
                         <div className="col-md-2">
