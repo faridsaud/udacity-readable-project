@@ -40,7 +40,9 @@ export default function comment(state = initialStateComments, action) {
             return newState;
 
         case UPDATE_COMMENT:
-            newState.comments.find(comment => comment.id === action.comment.id).body = action.comment.body;
+            let commentUpdated = newState.comments.find(comment => comment.id === action.comment.id);
+            commentUpdated.body = action.comment.body;
+            commentUpdated.timestamp = action.comment.timestamp;
             return newState;
 
         case ADD_COMMENTS:
